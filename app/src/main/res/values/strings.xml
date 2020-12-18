@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BookYourBeauty</string>
+    <string name="phone">phone</string>
+    <string name="email">email</string>
+    <string name="last_name">last_name</string>
+    <string name="date_of_birth">date_of_birth</string>
+    <string name="first_name">first_name</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="password">password</string>
+    <string name="save">save</string>
+</resources>

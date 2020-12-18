@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "575967175117",
+    "project_id": "bookyourbeauty-eb748",
+    "storage_bucket": "bookyourbeauty-eb748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575967175117:android:c1e8d8773b937a4d782484",
+        "android_client_info": {
+          "package_name": "com.example.bookyourbeauty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575967175117-75o27rirhra7djvte7q8bevckvudhhck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq7EQCzi-qZzYApYhhdRE8XpMZrpZuFbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575967175117-75o27rirhra7djvte7q8bevckvudhhck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
