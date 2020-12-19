@@ -55,6 +55,7 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 
     private FirebaseAuth auth;
     DatabaseReference referenceRoot;
+    Appointment newAppo;
 
     List<String> managerList;
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,24 +103,41 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
                     }
                 }
                 //make adapter to connect between the spinner to appointment list
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, managerList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                managersSpinner.setAdapter(adapter);
+//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, managerList);
+//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                managersSpinner.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        //activate spinner
+
+        //kinds of managers
+        //make adapter to connect between the spinner to appointment list
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, managerList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        managersSpinner.setAdapter(adapter);
+
         managersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String appointmentSelected =parent.getSelectedItem().toString();
+                choosenManager = (String) parent.getItemAtPosition(position);
+                System.out.println("&&&&choosenManager  =  "+choosenManager);
+                setIdForCurrentManager(choosenManager); //we found the id of the chosen manager and set it to the id opp manager
+
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                        public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+ //       managersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String appointmentSelected =parent.getSelectedItem().toString();
+//            }
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
 
 //        haircutList = new ArrayList<>();
 //        hairCutsFB haircuts = new hairCutsFB();
@@ -177,9 +195,42 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 //            }
 //        });
      }
+
+    private void setIdForCurrentManager(String choosenManager) {
+        String returnId;
+        FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
+        referenceRoot=rootNode.getReference("Managers");
+        referenceRoot.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("***********************before thr for ");
+                //go through all appointments
+                String currentManagerName;
+                String idManager="";
+
+                for (DataSnapshot s : snapshot.getChildren()) {
+                    //if appointment is free add to list
+                    System.out.println("***********************in the for!! ");
+                    currentManagerName = s.child("first_name").getValue().toString();
+                    if (!currentManagerName.equals(choosenManager)) {
+                        idManager = s.child("email").getValue().toString();
+                    }
+                }
+                newAppo.setIdManager(idManager);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 }
 
-
+}
 
 
 

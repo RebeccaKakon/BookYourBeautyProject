@@ -15,12 +15,13 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     Button salaryCalculator;
     Button calendar;
 //    Button Nothig;
-
+    String emailManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_options);
+        emailManager= getIntent().getStringExtra("email");
         setButtons();
         listenButtons();
     }
@@ -60,6 +61,8 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         }
         else if(v==calendar){
             Intent i = new Intent(this,choosTimeAndDate.class);
+            i.putExtra("email", emailManager);
+
             startActivity(i);
         }
 //        else if(v==Nothig){

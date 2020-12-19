@@ -33,10 +33,12 @@ public class choosTimeAndDate extends AppCompatActivity {
     String managerid;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choos_time_and_date);
+        managerid= getIntent().getStringExtra("email");
         save = (Button) findViewById(R.id.saveCreat);
         date= (EditText) findViewById(R.id.chooseDate);
         start= (EditText) findViewById(R.id.startTime);
@@ -57,7 +59,7 @@ public class choosTimeAndDate extends AppCompatActivity {
                 rootReference=rootNode.getReference();
                 auth=FirebaseAuth.getInstance();
 //                FirebaseUser user = auth.getCurrentUser();
-                managerid=auth.getCurrentUser().getUid();
+//                managerid=auth.getCurrentUser().getUid();
 
 //                newAppointment = new Appointment(choosenDate,choosenStartTime,choosenEndTime,managerid);
                 newAppointment = new Appointment();
