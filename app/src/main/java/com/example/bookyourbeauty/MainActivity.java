@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setImageView() {
-        welcome= (TextView)findViewById(R.id.welcome);
+        welcome= (TextView)findViewById(R.id.Welcome);
         maneger= (ImageView) findViewById(R.id.Manager_imageView);
         client= (ImageView) findViewById(R.id.Client_imageView);
     }

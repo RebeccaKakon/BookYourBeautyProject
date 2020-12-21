@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/back"
+    >
 
     <TextView
-        android:id="@+id/Wellcom"
+        android:id="@+id/Welcome"
         android:layout_width="296dp"
         android:layout_height="72dp"
         android:layout_marginStart="57dp"
@@ -16,7 +18,7 @@
         android:layout_marginEnd="58dp"
         android:layout_marginRight="58dp"
         android:layout_marginBottom="100dp"
-        android:text="Wellcom"
+        android:text="Welcome"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toTopOf="@+id/Manager_imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Client_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:layout_constraintTop_toBottomOf="@+id/Welcome"
         app:srcCompat="@drawable/manager_image" />
 
     <ImageView
@@ -52,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Manager_imageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:layout_constraintTop_toBottomOf="@+id/Welcome"
         app:srcCompat="@drawable/client_image" />
 
     <TextView
@@ -75,12 +77,15 @@
         android:id="@+id/Client_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="22dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="205dp"
         android:text="Client"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Manager_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Client_imageView" />
 
