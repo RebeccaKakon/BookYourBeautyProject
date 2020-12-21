@@ -57,6 +57,8 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
     Appointment newAppo;
 
     List<String> managerList;
+    List<String> dateList;
+
     protected void onCreate(Bundle savedInstanceState) {
         //initialization
         super.onCreate(savedInstanceState);
@@ -68,7 +70,6 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
         treatmentOptionSpinner = (Spinner) findViewById(R.id.treatmentOption_spinner);
         startTimeSpinner = (Spinner) findViewById(R.id.startTime_Spinner);
         DateSpinner = (Spinner) findViewById(R.id.Date_Spinner);
-//        dateOptionSpinner=(Spinner) findViewById(R.id.DateOptionSpinner);
         search = (Button) findViewById(R.id.Search);
 
         mAuth = FirebaseAuth.getInstance();
@@ -77,20 +78,15 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
     //activate views &buttons
     private void myActivate() {
         System.out.println("@@@@@@@@@@@@@@@@@@@start my activate");
-
         //take all available haircuts from firebase
         managerList = new ArrayList<>();
         String empty;
-
-//        ManagersFB managerr = new ManagersFB();
         //check if there are any appointments in FB
         FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
         referenceRoot=rootNode.getReference("Managers");
         referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("***********************before thr for ");
                 //go through all appointments
                 String currentManagerName;
                 for (DataSnapshot s : snapshot.getChildren()) {
@@ -113,9 +109,9 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 
         //kinds of managers
         //make adapter to connect between the spinner to appointment list
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, managerList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        managersSpinner.setAdapter(adapter);
+        ArrayAdapter<String> adapterManager = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, managerList);
+        adapterManager.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        managersSpinner.setAdapter(adapterManager);
 
         managersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -128,74 +124,46 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
             }
         });
 
- //       managersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String appointmentSelected =parent.getSelectedItem().toString();
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
+        dateList = new ArrayList<>();
+        referenceRoot=rootNode.getReference("Appointment");
+        referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //go through all appointments
+                String currentIdManager;
+                for (DataSnapshot currAppo : snapshot.getChildren()) {
+                    currentIdManager= currAppo.child("idManager").getValue().toString();
+                    if (currentIdManager.equals(newAppo.getIdManager())) {
+                        if (!dateList.contains(currAppo.child("date_app").getValue().toString())) {//if the date is not in the list
+                            dateList.add(currAppo.child("date_app").getValue().toString());
+                        } else {
+                            System.out.println("this date allready found and im the list");
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
-//        haircutList = new ArrayList<>();
-//        hairCutsFB haircuts = new hairCutsFB();
-//        DatabaseReference dr2 = haircuts.allHairCuts();
-//        dr2.addListenerForSingleValueEvent(new ValueEventListener() {
-//            //go through all haircuts
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                //add all haircuts to list
-//                for (DataSnapshot s : snapshot.getChildren()) {
-//                    haircutList.add(s.getValue(hairCut.class));
-//                }
-//                //make adapter to connect between the spinner to haircuts list
-//                ArrayAdapter<hairCut> adapter = new ArrayAdapter<hairCut>(selectAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, haircutList);
-//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                spinnerHaircut.setAdapter(adapter);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-//        //activate spinner
-//        spinnerHaircut.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                hairCut haircut = (hairCut) parent.getSelectedItem();
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-//
-//        select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String appointmentID = spinnerAppointment.getSelectedItem().toString();
-//                String haircut = spinnerHaircut.getSelectedItem().toString();
-//                String haircutID = haircut.substring(0, haircut.indexOf(','));
-//                appointmentFB app = new appointmentFB();
-//                app.getAppointmendByID(appointmentID).child("name").setValue((fName + " " + lName));
-//                app.getAppointmendByID(appointmentID).child("haircut").setValue(haircutID);
-//                app.getAppointmendByID(appointmentID).child("phone").setValue(phone);
-//                Toast.makeText(getApplicationContext(),"selected successful", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(selectAppointmentActivity.this,profileActivity.class);
-//                i.putExtra("firstName", fName);
-//                i.putExtra("lastName", lName);
-//                i.putExtra("phone", phone);
-//                startActivity(i);
-//            }
-//        });
+        ArrayAdapter<String> adapterDate = new ArrayAdapter<String>(BookAppointmentActivity.this, android.R.layout.simple_spinner_dropdown_item, dateList);
+        adapterDate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        DateSpinner.setAdapter(adapterDate);
+
+        DateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                choosenDate = (String) parent.getItemAtPosition(position);
+                System.out.println("&&&&choosenDate  =  "+choosenDate);
+                newAppo.setdate_app(choosenDate); //chang the date of the new appo
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
      }
 
-    private void setIdForCurrentManager(String choosenManager) {
+    private void setIdForCurrentManager(String choosenManager) {//to chang the id manager by the choosen name manager
         String returnId;
         FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
         referenceRoot=rootNode.getReference("Managers");
