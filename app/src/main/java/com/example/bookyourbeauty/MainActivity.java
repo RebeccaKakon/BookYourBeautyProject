@@ -6,29 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button maneger;
-    Button client;
+    ImageView maneger;
+    ImageView client;
     TextView welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setButtons();
-        listenButtons();
+        setImageView();
+        listenImageView();
     }
 
-    private void listenButtons() {
+    private void listenImageView() {
         maneger.setOnClickListener(this);
         client.setOnClickListener(this);
     }
 
-    private void setButtons() {
+    private void setImageView() {
         welcome= (TextView)findViewById(R.id.welcome);
-        maneger= (Button) findViewById(R.id.maneger);
-        client= (Button) findViewById(R.id.client);
+        maneger= (ImageView) findViewById(R.id.Manager_imageView);
+        client= (ImageView) findViewById(R.id.Client_imageView);
     }
 
 
