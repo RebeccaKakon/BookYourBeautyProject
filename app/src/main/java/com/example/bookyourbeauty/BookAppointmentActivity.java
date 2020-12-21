@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -40,8 +39,8 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
     Spinner managersSpinner;
 //    Spinner dateOptionSpinner;
     Spinner startTimeSpinner;
-    Spinner endTimeSpinner;
-    EditText dateOption;
+    Spinner DateSpinner;
+//    EditText dateOption;
     Button search;
     private FirebaseAuth mAuth;
 
@@ -68,8 +67,8 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
         managersSpinner = (Spinner) findViewById(R.id.manager_Spinner);
         treatmentOptionSpinner = (Spinner) findViewById(R.id.treatmentOption_spinner);
         startTimeSpinner = (Spinner) findViewById(R.id.startTime_Spinner);
-        endTimeSpinner = (Spinner) findViewById(R.id.endTime_Spinner);
-        dateOption=(EditText) findViewById(R.id.DateOption);
+        DateSpinner = (Spinner) findViewById(R.id.Date_Spinner);
+//        dateOptionSpinner=(Spinner) findViewById(R.id.DateOptionSpinner);
         search = (Button) findViewById(R.id.Search);
 
         mAuth = FirebaseAuth.getInstance();
@@ -245,7 +244,7 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 //        managersSpinner = (Spinner) findViewById(R.id.manager_Spinner);
 //        treatmentOptionSpinner = (Spinner) findViewById(R.id.treatmentOption_spinner);
 //        startTimeSpinner = (Spinner) findViewById(R.id.startTime_Spinner);
-//        endTimeSpinner = (Spinner) findViewById(R.id.endTime_Spinner);
+//        DateSpinner = (Spinner) findViewById(R.id.endTime_Spinner);
 //        dateOption=(EditText) findViewById(R.id.DateOption);
 //        search = (Button) findViewById(R.id.Search);
 //
@@ -310,11 +309,11 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 //                "14:00","15:00","16:00"};
 //        ArrayAdapter<String> adpEndT= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,endTimeArray);
 //        adpEndT.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        endTimeSpinner.setAdapter(adpEndT);
-//        endTimeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//        DateSpinner.setAdapter(adpEndT);
+//        DateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                choosenEndTime = (String) endTimeSpinner.getAdapter().getItem(position);
+//                choosenEndTime = (String) DateSpinner.getAdapter().getItem(position);
 //                System.out.println("&&&&choosenEndTime  =  "+choosenEndTime);
 //
 //            }
