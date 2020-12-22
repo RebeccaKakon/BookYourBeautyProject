@@ -62,8 +62,8 @@ public class Appointment {
     }
 
     public void setIdAppo() {
-        countIdAppointment++;
         this.idAppo = countIdAppointment;
+        countIdAppointment++;
     }
     public String getIdClient() {
         return idClient;

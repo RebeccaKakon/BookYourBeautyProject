@@ -17,8 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Calendar;
-
 public class choosTimeAndDate extends AppCompatActivity {
     EditText date;
     EditText start;
@@ -32,15 +30,15 @@ public class choosTimeAndDate extends AppCompatActivity {
     String choosenDate;
     String choosenStartTime;
     String choosenEndTime;
-    String managerId;
+    String managerid;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choos_time_and_date);
-
-        managerId= getIntent().getStringExtra("email");
-
+        managerid= getIntent().getStringExtra("email");
         save = (Button) findViewById(R.id.saveCreat);
         date= (EditText) findViewById(R.id.chooseDate);
         start= (EditText) findViewById(R.id.startTime);
@@ -52,7 +50,7 @@ public class choosTimeAndDate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("*********start onClick ");
-                rootNode=FirebaseDatabase.getInstance();
+                FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
 
 //                choosenDate= date.getText().toString();
 //                choosenStartTime= start.getText().toString();
@@ -65,15 +63,17 @@ public class choosTimeAndDate extends AppCompatActivity {
 
 //                newAppointment = new Appointment(choosenDate,choosenStartTime,choosenEndTime,managerid);
                 newAppointment = new Appointment();
-                //get the information that the manager choosen
-                choosenDate= date.getText().toString();
-                choosenStartTime= start.getText().toString();
-                choosenEndTime= end.getText().toString();
+                String choosenDate= date.getText().toString();
+                String choosenStartTime= start.getText().toString();
+                String choosenEndTime= end.getText().toString();
 
                 newAppointment.setdate_app(choosenDate);
                 newAppointment.setStartTime(choosenStartTime);
-                newAppointment.setEndTime(choosenStartTime);//choosenEndTime
-                newAppointment.setIdManager(managerId);
+                newAppointment.setEndTime(choosenEndTime);
+                newAppointment.setIdManager(managerid);
+              //  newAppointment.setIdClient(null); //// new
+             //   newAppointment.settretmantId(null);///new
+
 
 
                 rootNode=FirebaseDatabase.getInstance();
@@ -81,7 +81,7 @@ public class choosTimeAndDate extends AppCompatActivity {
                 rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot postSnapshot : snapshot.getChildren() ) {//for to chack if we have allredy the curr date
+                        for (DataSnapshot postSnapshot : snapshot.getChildren() ) {
                             //from DB
                             String TempDate= (String)postSnapshot.child("date_app").getValue().toString();
 //                            String start = (String) Objects.requireNonNull(postSnapshot.child("start").getValue()).toString();
@@ -99,42 +99,36 @@ public class choosTimeAndDate extends AppCompatActivity {
 //                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
 //                                break;
 //                            }
-                        }
-                //not found- you can add this new treatment
+                        }//ifnish to check if there is allready date like it
+
+                        //not found- you can add this new treatment
 //                        FirebaseUser user = auth.getCurrentUser();
 //                        String id = user.getUid();
-                newAppointment.setIdAppo();
+                        newAppointment.setIdAppo();
 
-                String id="appointment"+newAppointment.getIdAppo();
+                        String id="appointment"+newAppointment.getIdAppo();
 
-
-                rootReference.child(id).setValue(newAppointment); //add to firebase
-
-
-
-
-
-                Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
-                intent.putExtra("email",managerId);
-                startActivity(intent);
-            }
+                        rootReference.child(id).setValue(newAppointment); //add to firebase//child("Treatments")
+                        Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
+                        startActivity(intent);
+                    }// finish onDataChange
 
 
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
 
             }
+
         });
-
-
 
     }
 
-});
 
-        }
-
-
-        }
+}

@@ -254,8 +254,6 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
 //
 //            }
 //        });
-
-
 }
 
 }

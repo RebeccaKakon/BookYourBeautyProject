@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookYourBeauty">
-        <activity android:name=".choosTimeAndDate"></activity>
+        <activity android:name=".BookTimeOfDateActivity"></activity>
+        <activity android:name=".BookManagerActivity" />
+        <activity android:name=".BookTreatmentActivity" />
+        <activity android:name=".BookDateActivity" />
+        <activity android:name=".BookManagerAndTreatmentActivity" />
+        <activity android:name=".choosTimeAndDate" />
         <activity android:name=".selectTime" />
         <activity android:name=".AddTreatmentActivity" />
         <activity android:name=".OptionsOfAppoForBookingActivity" />
