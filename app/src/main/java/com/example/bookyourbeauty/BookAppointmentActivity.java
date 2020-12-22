@@ -157,6 +157,10 @@ public class BookAppointmentActivity extends AppCompatActivity {//implements Vie
             }
                         public void onNothingSelected(AdapterView<?> parent) {
             }
+
+
+
+
         });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         dateList = new ArrayList<>();

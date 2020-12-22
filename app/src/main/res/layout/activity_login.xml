@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/back"
+    >
 
     <EditText
         android:id="@+id/Password"
@@ -53,6 +55,7 @@
         android:layout_marginRight="158dp"
         android:layout_marginBottom="247dp"
         android:text="Login"
+        app:backgroundTint="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

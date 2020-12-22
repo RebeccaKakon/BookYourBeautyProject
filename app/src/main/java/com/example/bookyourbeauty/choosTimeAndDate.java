@@ -39,7 +39,7 @@ public class choosTimeAndDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choos_time_and_date);
 
-        managerid= getIntent().getStringExtra("email");
+        managerId= getIntent().getStringExtra("email");
 
         save = (Button) findViewById(R.id.saveCreat);
         date= (EditText) findViewById(R.id.chooseDate);
@@ -51,7 +51,7 @@ public class choosTimeAndDate extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("***********************start onClick ");
+                System.out.println("*********start onClick ");
                 rootNode=FirebaseDatabase.getInstance();
 
 //                choosenDate= date.getText().toString();
@@ -73,68 +73,68 @@ public class choosTimeAndDate extends AppCompatActivity {
                 newAppointment.setdate_app(choosenDate);
                 newAppointment.setStartTime(choosenStartTime);
                 newAppointment.setEndTime(choosenStartTime);//choosenEndTime
-                newAppointment.setIdManager(managerid);
+                newAppointment.setIdManager(managerId);
 
 
-//                rootNode=FirebaseDatabase.getInstance();
-//                rootReference=rootNode.getReference("Appointment");
-//                rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot postSnapshot : snapshot.getChildren() ) {//for to chack if we have allredy the curr date
-//                            //from DB
-//                            String TempDate= (String)postSnapshot.child("date_app").getValue().toString();
-////                            String start = (String) Objects.requireNonNull(postSnapshot.child("start").getValue()).toString();
-////                            String appointmenEndTime = (String) Objects.requireNonNull(postSnapshot.child("appointmenEndtTime").getValue()).toString();
-//
-//                            if ((TempDate.equals(choosenDate)) ) {
-//                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this date", Toast.LENGTH_SHORT).show();
+                rootNode=FirebaseDatabase.getInstance();
+                rootReference=rootNode.getReference("Appointment");
+                rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot postSnapshot : snapshot.getChildren() ) {//for to chack if we have allredy the curr date
+                            //from DB
+                            String TempDate= (String)postSnapshot.child("date_app").getValue().toString();
+//                            String start = (String) Objects.requireNonNull(postSnapshot.child("start").getValue()).toString();
+//                            String appointmenEndTime = (String) Objects.requireNonNull(postSnapshot.child("appointmenEndtTime").getValue()).toString();
+
+                            if ((TempDate.equals(choosenDate)) ) {
+                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this date", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+//                            if ((appointmenStartTime.equals(choosenStartTime)) ) {
+//                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
 //                                break;
 //                            }
-////                            if ((appointmenStartTime.equals(choosenStartTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-////                            if ((appointmenEndTime.equals(choosenEndTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-//                        }
-                        //not found- you can add this new treatment
+//                            if ((appointmenEndTime.equals(choosenEndTime)) ) {
+//                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
+//                                break;
+//                            }
+                        }
+                //not found- you can add this new treatment
 //                        FirebaseUser user = auth.getCurrentUser();
 //                        String id = user.getUid();
-                        newAppointment.setIdAppo();
+                newAppointment.setIdAppo();
 
-                        String id="appointment"+newAppointment.getIdAppo();
-
-
-                        rootReference.child(id).setValue(newAppointment); //add to firebase
+                String id="appointment"+newAppointment.getIdAppo();
 
 
+                rootReference.child(id).setValue(newAppointment); //add to firebase
 
 
 
-                        Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
-                        intent.putExtra("email",managerId);
-                        startActivity(intent);
-                    }
 
 
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-
+                Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
+                intent.putExtra("email",managerId);
+                startActivity(intent);
             }
 
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
+
+
 
     }
 
+});
 
-}
+        }
+
+
+        }
