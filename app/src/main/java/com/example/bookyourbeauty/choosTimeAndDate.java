@@ -200,6 +200,8 @@ int end;
                  end= Integer.parseInt(choosenEndHour);
 
                  newAppointment.setIdClient("-");
+                newAppointment.setIdTreatment("-");
+
                 newAppointment.setdate_app(choosenDate);
                 newAppointment.setStartTime(choosenStartHour);
                 int tempEnd= Integer.parseInt(choosenStartHour)+1;
@@ -300,6 +302,7 @@ int end;
                                 System.out.println("in the while");
                                 newAppointment.setdate_app(choosenDate);
                                 newAppointment.setIdClient("-");
+                                newAppointment.setIdTreatment("-");
                                 newAppointment.setStartTime(String.valueOf(start));
                                 newAppointment.setEndTime(String.valueOf(currEnd));
                                 newAppointment.setIdManager(managerId);
