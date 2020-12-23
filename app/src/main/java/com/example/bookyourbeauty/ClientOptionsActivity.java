@@ -40,15 +40,15 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             startActivity(iii);
         }
         else if(v==bookAppo){
-            String emailClient = getIntent().getStringExtra("email");
-            Intent ii = new Intent(this,BookAppointmentActivity.class);
-            ii.putExtra("email", emailClient);
+            String emailClient = getIntent().getStringExtra("email_currentClient");
+            Intent ii = new Intent(this,BookTreatmentActivity.class);
+            ii.putExtra("email_currentClient", emailClient);
             startActivity(ii);
         }
         else if(v==viewAppo){
-            String emailClient = getIntent().getStringExtra("email");/////////new
+            String emailClient = getIntent().getStringExtra("email_currentClient");/////////new
             Intent i = new Intent(this,ClientOptionsActivity.class);//viewAppointment
-            i.putExtra("email", emailClient);///////// new
+            i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }
     }

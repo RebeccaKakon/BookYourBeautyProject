@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
                                     Toast.makeText(LoginActivity.this, "your login was success", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(LoginActivity.this, ClientOptionsActivity.class);
-                                    intent.putExtra("email", emailClient);
+                                    intent.putExtra("email_currentClient", emailClient);
                                     startActivity(intent);
                                     break;
                                 } else {

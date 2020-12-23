@@ -12,13 +12,14 @@ public class Appointment {
     public Appointment(){
     }
 
-    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId) {
+    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId,String clientId) {
         this.date_app=choosenDate;
         this.startTime=choosenStartTime;
         this.endTime=choosenEndTime;
         this.idAppo=countIdAppointment;
-        countIdAppointment = countIdAppointment+1;
+        this.countIdAppointment++;
         this.idManager= manaherId;
+        this.idClient=clientId;
     }
 
 
@@ -33,9 +34,6 @@ public class Appointment {
 //        this.endTime=endTime;
 //    }
 
-
-
-
     public void setdate_app(String date_app) {
         this.date_app = date_app;
     }
@@ -46,36 +44,35 @@ public class Appointment {
     public String getStartTime() {
         return startTime;
     }
-
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
+
     public String getEndTime() {
         return endTime;
     }
-
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
+
     public int getIdAppo() {
         return idAppo;
     }
-
     public void setIdAppo() {
         this.idAppo = countIdAppointment;
         countIdAppointment++;
     }
+
     public String getIdClient() {
         return idClient;
     }
-
     public void setIdClient(String currId) {
         this.idClient = currId;
     }
+
     public String getIdManager() {
         return idManager;
     }
-
     public void setIdManager(String currId) {
         this.idManager = currId;
     }
