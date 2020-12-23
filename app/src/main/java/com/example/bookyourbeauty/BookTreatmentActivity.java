@@ -26,12 +26,12 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
 
     String choosenTreatment ;
     String choosenIdTreatment;
-    DatabaseReference referenceRoot;
-    FirebaseDatabase rootNode;
 
-    Appointment newAppo=new Appointment();
+    FirebaseDatabase rootNode;
+    DatabaseReference referenceRoot;
 
     List<String> treatmentsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,6 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
     }
 
     private void initTreatments() {
-
         treatmentsList = new ArrayList<>();
         rootNode=FirebaseDatabase.getInstance();
         referenceRoot=rootNode.getReference("Treatments");
@@ -58,7 +57,6 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
                     //if appointment is free add to list
                     currentTreatmentName= currTreatment.child("treatmentName").getValue().toString();
                     if (!treatmentsList.contains(currentTreatmentName)) {//if this current treatment is not in the list- add it
-                        System.out.println("***********************currentTreatmentName "+currentTreatmentName);
                         treatmentsList.add(currentTreatmentName);//add to the list
                     }
                 }
@@ -91,7 +89,6 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
             String emailClient = getIntent().getStringExtra("email_currntClient");
             Intent i = new Intent(BookTreatmentActivity.this, BookManagerActivity.class);
             i.putExtra("email_currntClient", emailClient);
@@ -101,10 +98,8 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
         });
     }
 
-
-
     private void setChoosenIdTreatment(String choosenTreatmentName) {//get id treatment by the choosen name treatment
-        FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
+        rootNode=FirebaseDatabase.getInstance();
         referenceRoot=rootNode.getReference("Treatments");
         referenceRoot.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -131,16 +126,4 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
             }
         });
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        if (v==continueButton) {
-//            System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
-//            String emailClient = getIntent().getStringExtra("email_currntClient");
-//            Intent i = new Intent(BookTreatmentActivity.this, BookManagerActivity.class);
-//            i.putExtra("email_currntClient", emailClient);
-//            i.putExtra("id_choosenTreatment", choosenIdTreatment);
-//            startActivity(i);
-//        }
-//    }
 }

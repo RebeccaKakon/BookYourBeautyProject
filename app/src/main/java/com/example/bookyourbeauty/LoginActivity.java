@@ -28,16 +28,15 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
     private Button login;
 
     DatabaseReference reference;
-    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //setEditText();
-        email= (EditText)findViewById(R.id.EmailAddress);
-        password= (EditText) findViewById(R.id.Password);
-        login= (Button) findViewById(R.id.Login);
+        setEditText();
+//        email= (EditText)findViewById(R.id.EmailAddress);
+//        password= (EditText) findViewById(R.id.Password);
+//        login= (Button) findViewById(R.id.Login);
       //  listenButtons();
 
         System.out.println("********************************** ");
@@ -63,8 +62,6 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
 
                                 if ((emailClient.equals(emailString)) && (passwordClient.equals(passString))) {
                                     System.out.println("***********************in the if********************************");
-//                                String currntClientPhone = (String) postSnapshot.child("phone").getValue().toString();
-//                                System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkk"+currntClientPhone);
                                     Toast.makeText(LoginActivity.this, "your login was success", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(LoginActivity.this, ClientOptionsActivity.class);
@@ -123,25 +120,10 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
             }
         });
     }
-
-   // }
     private void setEditText() {
         email= (EditText)findViewById(R.id.EmailAddress);
         password= (EditText) findViewById(R.id.Password);
         login= (Button) findViewById(R.id.Login);
 
     }
-    //private void listenButtons() {
-        //login.setOnClickListener(this);
-   // }
-
-  //  @Override
-    //public void onClick(View v) {
-//        if(v==login){
-//            Intent i = new Intent(this,MainActivity.class);//ClientOptionsActivity
-//            startActivity(i);
-//        }
-   // }
-
-
 }

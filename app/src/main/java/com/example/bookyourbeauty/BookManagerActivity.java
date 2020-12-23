@@ -21,21 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookManagerActivity extends AppCompatActivity {
-//    Spinner treatmentOptionSpinner;
         Spinner managersSpinner;
-
         Button continueButton;
 
-//    String choosenTreatment ;
-//    String choosenIdTreatment;
         String choosenManager ;
         String choosenIdManager;
-        DatabaseReference referenceRoot;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference referenceRoot;
+
         Appointment newAppo=new Appointment();
 
-//    List<String> treatmentsList;
         List<String> managerList;
-        FirebaseDatabase rootNode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

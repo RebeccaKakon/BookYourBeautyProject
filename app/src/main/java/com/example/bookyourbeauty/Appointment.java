@@ -134,14 +134,6 @@ public class Appointment {
         this.idTreatment = currId;
     }
 
-//    public int getidAppointment() {
-//        return idAppointment;
-//    }
-//
-//    public void setidAppointment(int currId) {
-//        this.idAppointment = currId;
-//    }
-
     @Override
     public String toString() {
         return "Appointment{" +
@@ -152,6 +144,4 @@ public class Appointment {
                 ", Manager id='" + idManager + '\'' +
                 ", Treatment id='"  ;
     }
-
-
 }

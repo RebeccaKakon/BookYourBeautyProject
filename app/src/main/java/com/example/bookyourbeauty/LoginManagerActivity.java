@@ -27,17 +27,15 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
     private Button login;
 
     DatabaseReference reference;
-    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //setEditText();
-        email= (EditText)findViewById(R.id.EmailAddress);
-        password= (EditText) findViewById(R.id.Password);
-        login= (Button) findViewById(R.id.Login);
-        //  listenButtons();
+        setEditText();
+//        email= (EditText)findViewById(R.id.EmailAddress);
+//        password= (EditText) findViewById(R.id.Password);
+//        login= (Button) findViewById(R.id.Login);
 
         System.out.println("********************************** ");
 
@@ -83,9 +81,6 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
 
                     }
                 });
-
-
-
             }
         });
     }
@@ -97,7 +92,4 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
         login= (Button) findViewById(R.id.Login);
 
     }
-
-
-
 }

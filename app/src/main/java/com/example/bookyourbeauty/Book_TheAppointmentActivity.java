@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Book_TheAppointmentActivity extends AppCompatActivity {
 
-
     DatabaseReference referenceRoot;
     FirebaseDatabase rootNode;
 

@@ -37,30 +37,25 @@ public class RegisterActivity extends AppCompatActivity {
     EditText password;
     Button save;
     Client client;
-    //    FirebaseAuth mAuth;
-    //FirebaseDatabase rootNode;
-    //    =FirebaseDatabase.getInstance();
-    DatabaseReference reference;
-   private FirebaseAuth auth;
-//    = database.getReference();
-    //dbRef= database.getReference(/....../) mikum spetsifi !!!
 
+    private FirebaseAuth auth;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-//        setEditText();
-        email = (EditText) findViewById(R.id.EmailAddress);
-        first_name = (EditText) findViewById(R.id.FirstName);
-        last_name = (EditText) findViewById(R.id.LastName);
-        phone = (EditText) findViewById(R.id.Phone);
-        date_birth = (EditText) findViewById(R.id.Date);
-       female= (RadioButton) findViewById(R.id.Female);
-       male= (RadioButton) findViewById(R.id.Male);
-        password = (EditText) findViewById(R.id.Password);
-        save = (Button) findViewById(R.id.SaveNewClient);
+        setEditText();
+//        email = (EditText) findViewById(R.id.EmailAddress);
+//        first_name = (EditText) findViewById(R.id.FirstName);
+//        last_name = (EditText) findViewById(R.id.LastName);
+//        phone = (EditText) findViewById(R.id.Phone);
+//        date_birth = (EditText) findViewById(R.id.Date);
+//       female= (RadioButton) findViewById(R.id.Female);
+//       male= (RadioButton) findViewById(R.id.Male);
+//        password = (EditText) findViewById(R.id.Password);
+//        save = (Button) findViewById(R.id.SaveNewClient);
 
        //save.setOnClickListener((View.OnClickListener) this);
         System.out.println("********************************** ");
@@ -114,26 +109,21 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), LoginActivity.class);
                 startActivity(intent);
 
-//        listenButtons();
             }
         });
     }
 
-//    private void setEditText() {
-//        email = (EditText) findViewById(R.id.EmailAddress);
-//        first_name = (EditText) findViewById(R.id.FirstName);
-//        last_name = (EditText) findViewById(R.id.LastName);
-//        phone = (EditText) findViewById(R.id.Phone);
-//        date_birth = (EditText) findViewById(R.id.Date);
-////        female= (RadioButton) findViewById(R.id.Female);
-////        male= (RadioButton) findViewById(R.id.Male);
-//        password = (EditText) findViewById(R.id.Password);
-//        save = (Button) findViewById(R.id.Save);
-//
-//    }
-//    private void listenButtons() {
-//        save.setOnClickListener(this);
-//    }
+    private void setEditText() {
+        email = (EditText) findViewById(R.id.EmailAddress);
+        first_name = (EditText) findViewById(R.id.FirstName);
+        last_name = (EditText) findViewById(R.id.LastName);
+        phone = (EditText) findViewById(R.id.Phone);
+        date_birth = (EditText) findViewById(R.id.Date);
+        female= (RadioButton) findViewById(R.id.Female);
+        male= (RadioButton) findViewById(R.id.Male);
+        password = (EditText) findViewById(R.id.Password);
+        save = (Button) findViewById(R.id.SaveNewClient);
+    }
 
 //    String id,String email,String first_name, String last_name,String date_birth, boolean female,
 //    boolean male, String password,String phone

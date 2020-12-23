@@ -25,17 +25,16 @@ public class BookDateActivity extends AppCompatActivity {
     Button continueButton;
 
     String choosenDate ;
+
     DatabaseReference referenceRoot;
     FirebaseDatabase rootNode;
 
-    Appointment newAppo=new Appointment();
-
     List<String> datesList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_date);
-
 
         dateOptionSpinner = (Spinner) findViewById(R.id.DateOptions_spinner);
         continueButton = (Button) findViewById(R.id.ContinueButton);
@@ -45,7 +44,7 @@ public class BookDateActivity extends AppCompatActivity {
     }
 
     private void initDates() {
-System.out.println("initDates");
+        System.out.println("initDates");
         datesList = new ArrayList<>();
         rootNode=FirebaseDatabase.getInstance();
         referenceRoot=rootNode.getReference("Appointment");

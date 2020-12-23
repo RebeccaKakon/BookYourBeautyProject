@@ -25,9 +25,9 @@ public class BookTimeOfDateActivity extends AppCompatActivity {
     Button continueButton;
 
     String choosenTime ;
+
     DatabaseReference referenceRoot;
     FirebaseDatabase rootNode;
-
 
     List<String> timesList;
     @Override

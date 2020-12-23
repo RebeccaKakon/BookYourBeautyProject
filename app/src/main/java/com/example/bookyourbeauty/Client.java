@@ -9,10 +9,7 @@ public class Client implements Serializable {
     private String last_name;
     private String phone;
     private String date_birth;
-    //    boolean female;
-//    boolean male;
     private String password;
-    //private Button save;
 
     public Client(){
 

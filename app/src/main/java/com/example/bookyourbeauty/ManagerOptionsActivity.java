@@ -14,7 +14,6 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     Button EditSales;
     Button salaryCalculator;
     Button calendar;
-//    Button Nothig;
     String emailManager;
 
     @Override
@@ -29,7 +28,6 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
 
     private void listenButtons() {
         calendar.setOnClickListener(this);
-//        Nothig.setOnClickListener(this);
         AddTreatment.setOnClickListener(this);
         EditSales.setOnClickListener(this);
         salaryCalculator.setOnClickListener(this);
@@ -41,7 +39,6 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         EditSales= (Button) findViewById(R.id.EditSales);
         salaryCalculator= (Button) findViewById(R.id.SalaryCalculator);
        calendar = (Button) findViewById(R.id.Calender);
-//        Nothig= (Button) findViewById(R.id.Nothig);
     }
 
 
@@ -65,10 +62,5 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
 
             startActivity(i);
         }
-//        else if(v==Nothig){
-//            Intent i = new Intent(this,allAppointmentActivity.class);
-//            startActivity(i);
-//        }
-
     }
 }
