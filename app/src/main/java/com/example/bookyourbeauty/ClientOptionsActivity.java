@@ -12,10 +12,16 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
     Button bookAppo;
     Button viewAppo;
 
+    String emailClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_options);
+
+        emailClient = getIntent().getStringExtra("email_currentClient");
+        System.out.println("in client options emailClient= "+emailClient);
+
         setButtons();
         listenButtons();
     }
@@ -40,13 +46,13 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             startActivity(iii);
         }
         else if(v==bookAppo){
-            String emailClient = getIntent().getStringExtra("email_currentClient");
+            System.out.println("2222222222222222222222in client options emailClient= "+emailClient);
+
             Intent ii = new Intent(this,BookTreatmentActivity.class);
             ii.putExtra("email_currentClient", emailClient);
             startActivity(ii);
         }
         else if(v==viewAppo){
-            String emailClient = getIntent().getStringExtra("email_currentClient");/////////new
             Intent i = new Intent(this,ClientOptionsActivity.class);//viewAppointment
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);

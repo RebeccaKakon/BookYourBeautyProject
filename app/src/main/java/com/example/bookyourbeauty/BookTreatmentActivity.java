@@ -26,6 +26,7 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
 
     String choosenTreatment ;
     String choosenIdTreatment;
+    String emailClient;
 
     FirebaseDatabase rootNode;
     DatabaseReference referenceRoot;
@@ -36,6 +37,9 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_treatment);
+
+        emailClient= getIntent().getStringExtra("email_currentClient");
+        System.out.println("in book treatment emailClient= "+emailClient);
 
         treatmentOptionSpinner = (Spinner) findViewById(R.id.treatmentOption_spinner);
         continueButton = (Button) findViewById(R.id.ContinueButton);
@@ -89,9 +93,9 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String emailClient = getIntent().getStringExtra("email_currntClient");
+
             Intent i = new Intent(BookTreatmentActivity.this, BookManagerActivity.class);
-            i.putExtra("email_currntClient", emailClient);
+            i.putExtra("email_currentClient", emailClient);
             i.putExtra("id_choosenTreatment", choosenIdTreatment);
             startActivity(i);
             }

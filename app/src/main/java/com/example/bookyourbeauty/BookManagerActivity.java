@@ -27,6 +27,9 @@ public class BookManagerActivity extends AppCompatActivity {
         String choosenManager ;
         String choosenIdManager;
 
+    String emailClient;
+    String choosenIdTreatment;
+
     FirebaseDatabase rootNode;
     DatabaseReference referenceRoot;
 
@@ -90,11 +93,12 @@ public class BookManagerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("in BookManager continueButton$$$$$$$$$$$$");
-                String emailClient = getIntent().getStringExtra("email_currntClient");
-                String choosenIdTreatment = getIntent().getStringExtra("choosenIdTreatment");
+                emailClient = getIntent().getStringExtra("email_currentClient");
+                System.out.println("in book manager emailClient= "+emailClient);
+                choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
 
                 Intent i = new Intent(BookManagerActivity.this, BookDateActivity.class);
-                i.putExtra("email_currntClient", emailClient);
+                i.putExtra("email_currentClient", emailClient);
                 i.putExtra("id_choosenTreatment", choosenIdTreatment);
                 i.putExtra("id_choosenManager", choosenIdManager);
 
@@ -121,6 +125,7 @@ public class BookManagerActivity extends AppCompatActivity {
                     if (currentManagerName.equals(choosenManagerName)) {
                         idManager = s.child("email").getValue().toString();
                         System.out.println("%%%%%%%%%%%%%%%%idManager= "+idManager);
+                        break;
                     }
                 }
                 System.out.println("****************idManager= "+idManager);

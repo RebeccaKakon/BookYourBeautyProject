@@ -29,6 +29,9 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
 
     DatabaseReference reference;
 
+    String emailString;
+    String passString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +48,8 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
             @Override
             public void onClick(View v) {
 
-                String emailString= email.getText().toString();
-                String passString= password.getText().toString();
+                emailString= email.getText().toString();
+                passString= password.getText().toString();
                 FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
                 reference=rootNode.getReference("Clients");
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -65,6 +68,7 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
                                     Toast.makeText(LoginActivity.this, "your login was success", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(LoginActivity.this, ClientOptionsActivity.class);
+                                   System.out.println("email client in login= "+emailClient);
                                     intent.putExtra("email_currentClient", emailClient);
                                     startActivity(intent);
                                     break;

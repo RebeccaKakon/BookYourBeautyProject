@@ -25,6 +25,9 @@ public class BookDateActivity extends AppCompatActivity {
     Button continueButton;
 
     String choosenDate ;
+    String emailClient;
+    String choosenIdTreatment;
+    String choosenIdManager;
 
     DatabaseReference referenceRoot;
     FirebaseDatabase rootNode;
@@ -78,30 +81,47 @@ public class BookDateActivity extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
+                continueButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
+                        emailClient = getIntent().getStringExtra("email_currentClient");
+                        System.out.println("in book Date emailClient= "+emailClient);
+                        choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+                        choosenIdManager = getIntent().getStringExtra("id_choosenManager");
 
+                        Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
+                        i.putExtra("email_currentClient", emailClient);
+                        i.putExtra("id_choosenTreatment", choosenIdTreatment);
+                        i.putExtra("id_choosenManager", choosenIdManager);
+                        i.putExtra("id_choosenDate", choosenDate);
+
+                        startActivity(i);
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
 
         });
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
-                String emailClient = getIntent().getStringExtra("email_currntClient");
-                String choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
-                String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
-
-                Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
-                i.putExtra("email_currntClient", emailClient);
-                i.putExtra("id_choosenTreatment", choosenIdTreatment);
-                i.putExtra("id_choosenManager", choosenIdManager);
-                i.putExtra("id_choosenDate", choosenDate);
-
-                startActivity(i);
-            }
-        });
+//        continueButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
+//                String emailClient = getIntent().getStringExtra("email_currntClient");
+//                String choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+//                String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
+//
+//                Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
+//                i.putExtra("email_currntClient", emailClient);
+//                i.putExtra("id_choosenTreatment", choosenIdTreatment);
+//                i.putExtra("id_choosenManager", choosenIdManager);
+//                i.putExtra("id_choosenDate", choosenDate);
+//
+//                startActivity(i);
+//            }
+//        });
     }
 
 
