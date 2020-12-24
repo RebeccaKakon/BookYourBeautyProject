@@ -5,16 +5,17 @@ public class viewAppo {
     String date_app;
     String Tid;
     String Tname;
+    String Aid;
 
 
     public viewAppo() {}
 
     @Override
     public String toString() {
-        return "Appointment: " +
-                "startTime='" + startTime + '\'' +
-                ", date_app='" + date_app + '\'' +
-                ", Tid='" + Tid + '\'' +
-                ", Tname='" + Tname + '\'' ;
+        return "Appointment: " + "Aid="+Aid+
+                ", startTime=" + startTime + '\'' +
+                ", date_app=" + date_app + '\'' +
+                ", Tid=" + Tid + '\'' +
+                ", Tname=" + Tname + '\'' ;
     }
 }

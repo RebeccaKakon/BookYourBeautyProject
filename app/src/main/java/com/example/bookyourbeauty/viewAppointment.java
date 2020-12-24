@@ -80,6 +80,7 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                         String startTime=s.child("startTime").getValue().toString();
                         String date_app=s.child("date_app").getValue().toString();
                         String Tid=s.child("idTreatment").getValue().toString();
+                        String Aid=s.child("idAppo").getValue().toString();
                         referenceRoot=rootNode.getReference("Treatments");
                         referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
                             @Override
@@ -98,6 +99,7 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                                 }
 
 //                                arrayList.add(Tname);
+                                vie.Aid=Aid;
                                 vie.date_app=date_app;
                                 vie.startTime=startTime;
                                 vie.Tid=Tid;
@@ -125,9 +127,10 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item=(String)adapterView.getItemAtPosition(i);//This will give you the same result of viewHolder.LL.setOnClickListener as you are doing
-                idAppo=id_func(item,"Tid=");
+                idAppo=id_func(item,"Aid=");
 //                num_item=id_func(item,"Num of Product=");
-                System.out.println("item========");
+                System.out.println("item========"+item);
+                System.out.println("Aid========"+idAppo);
             }
         });
 
