@@ -42,7 +42,7 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
         System.out.println("in book treatment emailClient= "+emailClient);
 
         treatmentOptionSpinner = (Spinner) findViewById(R.id.treatmentOption_spinner);
-        continueButton = (Button) findViewById(R.id.ContinueButton);
+        continueButton = (Button) findViewById(R.id.Save);
 
         initTreatments();
 

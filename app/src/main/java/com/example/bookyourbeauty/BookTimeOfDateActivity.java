@@ -40,7 +40,7 @@ public class BookTimeOfDateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_time_of_date);
 
         timeSpinner = (Spinner) findViewById(R.id.Time_spinner);
-        continueButton = (Button) findViewById(R.id.ContinueButton);
+        continueButton = (Button) findViewById(R.id.Save);
 
         initTimes();
 
@@ -91,29 +91,30 @@ public class BookTimeOfDateActivity extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
-                continueButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("in BookTime continueButton$$$$$$$$$$$$");
-//                String emailClient = getIntent().getStringExtra("email_currntClient");
-//                String choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
-//                String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
 
-                        Intent i = new Intent(BookTimeOfDateActivity.this, Book_TheAppointmentActivity.class);
-                        i.putExtra("email_currentClient", emailClient);
-                        i.putExtra("id_choosenTreatment", choosenIdTreatment);
-                        i.putExtra("id_choosenManager", choosenIdManager);
-                        i.putExtra("id_choosenDate", choosenDate);
-                        i.putExtra("id_choosenTime", choosenTime);
-
-                        startActivity(i);
-                    }
-                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
 
+        });
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("in BookTime continueButton$$$$$$$$$$$$");
+//                String emailClient = getIntent().getStringExtra("email_currntClient");
+//                String choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+//                String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
+
+                Intent i = new Intent(BookTimeOfDateActivity.this, Book_TheAppointmentActivity.class);
+                i.putExtra("email_currentClient", emailClient);
+                i.putExtra("id_choosenTreatment", choosenIdTreatment);
+                i.putExtra("id_choosenManager", choosenIdManager);
+                i.putExtra("id_choosenDate", choosenDate);
+                i.putExtra("id_choosenTime", choosenTime);
+
+                startActivity(i);
+            }
         });
 
     }

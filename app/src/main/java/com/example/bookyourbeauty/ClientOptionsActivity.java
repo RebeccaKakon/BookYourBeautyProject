@@ -53,7 +53,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             startActivity(ii);
         }
         else if(v==viewAppo){
-            Intent i = new Intent(this,ClientOptionsActivity.class);//viewAppointment
+            Intent i = new Intent(this,viewAppointment.class);//viewAppointment
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }

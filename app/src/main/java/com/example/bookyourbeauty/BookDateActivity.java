@@ -40,7 +40,7 @@ public class BookDateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_date);
 
         dateOptionSpinner = (Spinner) findViewById(R.id.DateOptions_spinner);
-        continueButton = (Button) findViewById(R.id.ContinueButton);
+        continueButton = (Button) findViewById(R.id.Save);
 
         initDates();
 

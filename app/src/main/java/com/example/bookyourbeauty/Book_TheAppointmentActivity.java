@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,7 +28,7 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book__the_appointment);
-        ok_button = (Button) findViewById(R.id.ContinueButton);
+        ok_button = (Button) findViewById(R.id.Save);
 
 
         emailClient = getIntent().getStringExtra("email_currentClient");

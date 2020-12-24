@@ -42,7 +42,7 @@ public class BookManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_manager);
         managersSpinner = (Spinner) findViewById(R.id.manager_Spinner);
-        continueButton = (Button) findViewById(R.id.ContinueButton);
+        continueButton = (Button) findViewById(R.id.Save);
         initManager();
 
     }
