@@ -6,16 +6,18 @@ public class viewAppo {
     String Tid;
     String Tname;
     String Aid;
+    String clientName;
+    String managerName;
 
 
     public viewAppo() {}
 
     @Override
     public String toString() {
-        return "Appointment: " + "Aid="+Aid+
-                ", startTime=" + startTime + '\'' +
-                ", date_app=" + date_app + '\'' +
-                ", Tid=" + Tid + '\'' +
-                ", Tname=" + Tname + '\'' ;
+        return "Appointment: " + "\n" +
+                "client=" + clientName + "\n" + "beautician= " +managerName + "\n" +
+                "time=" + startTime + "\n" +
+                "date=" + date_app + "\n" +
+                "the treatment=" + Tname + "\n" + "AppoNumm="+Aid + "\n" ;
     }
 }

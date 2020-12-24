@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ManagerOptionsActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button AddTreatment;
-    Button EditSales;
-    Button salaryCalculator;
+    Button Addinformation;
+    Button viewAppointment;
     Button calendar;
     String emailManager;
 
@@ -29,16 +29,16 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     private void listenButtons() {
         calendar.setOnClickListener(this);
         AddTreatment.setOnClickListener(this);
-        EditSales.setOnClickListener(this);
-        salaryCalculator.setOnClickListener(this);
+        Addinformation.setOnClickListener(this);
+        viewAppointment.setOnClickListener(this);
 
     }
 
     private void setButtons() {
         AddTreatment= (Button) findViewById(R.id.AddTreatment);
-        EditSales= (Button) findViewById(R.id.EditSales);
-        salaryCalculator= (Button) findViewById(R.id.SalaryCalculator);
-       calendar = (Button) findViewById(R.id.Calender);
+        Addinformation= (Button) findViewById(R.id.information);
+        viewAppointment= (Button) findViewById(R.id.viewAppointment);
+        calendar = (Button) findViewById(R.id.Calender);
     }
 
 
@@ -48,12 +48,14 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
             Intent ii= new Intent(this,AddTreatmentActivity.class);
             startActivity(ii);
         }
-        else if(v==EditSales){
-            Intent i = new Intent(this,MainActivity.class);
+        else if(v==Addinformation){
+            Intent i = new Intent(this,AddInformation.class);
+            i.putExtra("email", emailManager);
             startActivity(i);
         }
-        else if(v==salaryCalculator){
-            Intent i = new Intent(this,MainActivity.class);
+        else if(v==viewAppointment){
+            Intent i = new Intent(this,viewManagerAppointment.class);
+            i.putExtra("email", emailManager);
             startActivity(i);
         }
         else if(v==calendar){

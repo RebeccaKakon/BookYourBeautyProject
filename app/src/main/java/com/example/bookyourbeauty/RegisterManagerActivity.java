@@ -63,7 +63,6 @@ public class RegisterManagerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 System.out.println("***********************start onClick ");
                 FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
-                System.out.println("***************************************************88after getInstance ");
 
                 reference=rootNode.getReference();
                 auth=FirebaseAuth.getInstance();
@@ -76,7 +75,6 @@ public class RegisterManagerActivity extends AppCompatActivity {
                 manager.setPassword(pass);
                 manager.setFirst_name(firstName);
                 manager.setLast_name(lastname);
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + manager.toString());
                 auth.createUserWithEmailAndPassword(manager.getEmail(), manager.getPassword())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override

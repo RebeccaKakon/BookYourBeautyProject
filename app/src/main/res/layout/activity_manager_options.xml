@@ -20,13 +20,13 @@
         android:layout_marginBottom="31dp"
         android:text="Add Treatment"
         app:backgroundTint="@color/teal_200"
-        app:layout_constraintBottom_toTopOf="@+id/EditSales"
+        app:layout_constraintBottom_toTopOf="@+id/information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/EditSales"
+        android:id="@+id/information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="145dp"
@@ -35,15 +35,15 @@
         android:layout_marginEnd="146dp"
         android:layout_marginRight="146dp"
         android:layout_marginBottom="71dp"
-        android:text="Edit Sales"
+        android:text="Add information"
         app:backgroundTint="@color/teal_200"
-        app:layout_constraintBottom_toTopOf="@+id/SalaryCalculator"
+        app:layout_constraintBottom_toTopOf="@+id/viewAppointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddTreatment" />
 
     <Button
-        android:id="@+id/SalaryCalculator"
+        android:id="@+id/viewAppointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="107dp"
@@ -52,12 +52,12 @@
         android:layout_marginEnd="108dp"
         android:layout_marginRight="108dp"
         android:layout_marginBottom="338dp"
-        android:text="Salary Calculator"
+        android:text="view Appointment"
         app:backgroundTint="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditSales" />
+        app:layout_constraintTop_toBottomOf="@+id/information" />
 
     <Button
         android:id="@+id/Calender"
@@ -74,6 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SalaryCalculator" />
+        app:layout_constraintTop_toBottomOf="@+id/viewAppointment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

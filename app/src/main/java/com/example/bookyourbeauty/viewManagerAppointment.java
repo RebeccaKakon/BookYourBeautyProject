@@ -1,5 +1,8 @@
 package com.example.bookyourbeauty;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,8 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class viewAppointment extends AppCompatActivity  implements View.OnClickListener{
-
+public class viewManagerAppointment extends AppCompatActivity implements View.OnClickListener {
     ListView ViewP;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -33,28 +32,29 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
     String Tnamenew="";
     String idAppo;
 
-    public String id_func (String name,String search){
-        System.out.println("name= "+name);
-        int index_id=name.indexOf(search);
-        index_id+=search.length();
-        String answer="";
-        while(name.charAt(index_id)!=',' && index_id<name.length()-1 && name.charAt(index_id)!=' '){
-            System.out.print(name.charAt(index_id));
-            answer+=name.charAt(index_id);
-            index_id++;
-        }
-        System.out.println("id of busniess item is ????="+answer);
-        return answer;
-    }
+//    public String id_func (String name,String search){
+//        System.out.println("name= "+name);
+//        int index_id=name.indexOf(search);
+//        index_id+=search.length();
+//        String answer="";
+//        while(name.charAt(index_id)!=',' && index_id<name.length()-1 && name.charAt(index_id)!=' '){
+//            System.out.print(name.charAt(index_id));
+//            answer+=name.charAt(index_id);
+//            index_id++;
+//        }
+//        System.out.println("id of busniess item is ????="+answer);
+//        return answer;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String clientId= getIntent().getStringExtra("email_currentClient");
+        String managerId= getIntent().getStringExtra("email");
 
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Appointment");
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_appointment);
+        setContentView(R.layout.activity_view_manager_appointment);
         go= (Button) findViewById(R.id.Go) ;
 
         System.out.println("new page");
@@ -75,8 +75,8 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                 String currentIdClient;
                 for (DataSnapshot s : snapshot.getChildren()) {
                     //if appointment is free add to list
-                    currentIdClient= s.child("idClient").getValue().toString();
-                    if (currentIdClient.equals(clientId)) {
+                    currentIdClient= s.child("idManager").getValue().toString();
+                    if (currentIdClient.equals(managerId)) {
                         String startTime=s.child("startTime").getValue().toString();
                         String date_app=s.child("date_app").getValue().toString();
                         String Tid=s.child("idTreatment").getValue().toString();
@@ -132,10 +132,10 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item=(String)adapterView.getItemAtPosition(i);//This will give you the same result of viewHolder.LL.setOnClickListener as you are doing
-                idAppo=id_func(item,"AppoNumm");
+//                idAppo=id_func(item,"Aid=");
 //                num_item=id_func(item,"Num of Product=");
-                System.out.println("item========"+item);
-                System.out.println("Aid========"+idAppo);
+//                System.out.println("item========"+item);
+//                System.out.println("Aid========"+idAppo);
             }
         });
 
@@ -144,8 +144,8 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
     @Override
     public void onClick(View v) {
         if(v==go){
-            Intent intent= new Intent(this,DeleteAppointment.class);
-            intent.putExtra("idAppo",idAppo);
+            Intent intent= new Intent(this,ManagerOptionsActivity.class);
+//            intent.putExtra("idAppo",idAppo);
 //            intent.putExtra("id_of_business_item",id_of_business_item);
 //            intent.putExtra("id_of_client",id_of_client);
             startActivity(intent);
@@ -154,6 +154,5 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
 
         }
     }
+
 }
-
-
