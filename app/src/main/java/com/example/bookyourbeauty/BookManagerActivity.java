@@ -96,6 +96,7 @@ public class BookManagerActivity extends AppCompatActivity {
                 emailClient = getIntent().getStringExtra("email_currentClient");
                 System.out.println("in book manager emailClient= "+emailClient);
                 choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+                System.out.println("in book Manager choosenIdTreatment= "+choosenIdTreatment);
 
                 Intent i = new Intent(BookManagerActivity.this, BookDateActivity.class);
                 i.putExtra("email_currentClient", emailClient);

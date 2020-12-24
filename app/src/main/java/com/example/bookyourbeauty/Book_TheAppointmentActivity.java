@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Book_TheAppointmentActivity extends AppCompatActivity {
 
@@ -21,6 +22,9 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
     FirebaseDatabase rootNode;
     String emailClient;
     String choosenIdTreatment;
+    String choosenIdManager;
+    String choosenDate;
+    String choosenTime;
 
     Button ok_button;
 
@@ -28,17 +32,32 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book__the_appointment);
-        ok_button = (Button) findViewById(R.id.Save);
+        ok_button = (Button) findViewById(R.id.Ok_button);
 
 
         emailClient = getIntent().getStringExtra("email_currentClient");
         System.out.println("in book appo emailClient= "+emailClient);
         choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
-        String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
-        String choosenDate= getIntent().getStringExtra("id_choosenDate");
-        String choosenTime= getIntent().getStringExtra("id_choosenTime");
+        choosenIdManager = getIntent().getStringExtra("id_choosenManager");
+        System.out.println("in book appo choosenIdTreatment= "+choosenIdTreatment);
+        System.out.println("in book appo choosenIdManager= "+choosenIdManager);
 
-        findIdAppo_And_SetIDClient(emailClient,choosenIdTreatment,choosenIdManager,choosenDate,choosenTime);
+        choosenDate= getIntent().getStringExtra("id_choosenDate");
+        System.out.println("in book appo choosenDate= "+choosenDate);
+
+        choosenTime= getIntent().getStringExtra("id_choosenTime");
+        System.out.println("in book appo choosenTime= "+choosenTime);
+
+
+        ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                findIdAppo_And_SetIDClient(emailClient,choosenIdTreatment,choosenIdManager,choosenDate,choosenTime);
+                Intent intent = new Intent(Book_TheAppointmentActivity.this, ClientOptionsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findIdAppo_And_SetIDClient(String emailClient, String choosenIdTreatment, String choosenIdManager, String choosenDate, String choosenTime) {
@@ -71,21 +90,21 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
                             }
                         }
                     }
+
+
                 }
                 Toast.makeText(Book_TheAppointmentActivity.this, "your add your new appointment seccssed", Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(Book_TheAppointmentActivity.this, ClientOptionsActivity.class);
 //                startActivity(intent);
-
-                ok_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Book_TheAppointmentActivity.this, ClientOptionsActivity.class);
-                        startActivity(intent);
-                    }
-                });
-
-
-
+//
+//                ok_button.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+//                        Intent intent = new Intent(Book_TheAppointmentActivity.this, ClientOptionsActivity.class);
+//                        startActivity(intent);
+//                    }
+//                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -93,5 +112,8 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
 
         });
 
+
     }
+
+
 }

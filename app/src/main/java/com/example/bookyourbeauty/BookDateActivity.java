@@ -39,6 +39,11 @@ public class BookDateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_date);
 
+        emailClient = getIntent().getStringExtra("email_currentClient");
+        System.out.println("in book Date emailClient= "+emailClient);
+
+        choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+        choosenIdManager = getIntent().getStringExtra("id_choosenManager");
         dateOptionSpinner = (Spinner) findViewById(R.id.DateOptions_spinner);
         continueButton = (Button) findViewById(R.id.Save);
 
@@ -56,10 +61,14 @@ public class BookDateActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //go through all appointments
                 String currDate;
+                //String currIdClient="";
                 for (DataSnapshot currAppo : snapshot.getChildren()) {
                     //if appointment is free add to list
                     currDate= currAppo.child("date_app").getValue().toString();
-                    if (!datesList.contains(currDate)) {//if this current date is not in the list- add it
+//                    if (currAppo.child("idClient").exists()) {
+//                        currIdClient = currAppo.child("idClient").getValue().toString();
+//                    }
+                    if (!datesList.contains(currDate) ) {//&& !currIdClient.equals("-") //if this current date is not in the list && the appoinment is not taken by ather client- add it
                         System.out.println("***********************currDate "+currDate);
                         datesList.add(currDate);//add to the list
                     }
@@ -81,47 +90,47 @@ public class BookDateActivity extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
-                continueButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
-                        emailClient = getIntent().getStringExtra("email_currentClient");
-                        System.out.println("in book Date emailClient= "+emailClient);
-                        choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
-                        choosenIdManager = getIntent().getStringExtra("id_choosenManager");
-
-                        Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
-                        i.putExtra("email_currentClient", emailClient);
-                        i.putExtra("id_choosenTreatment", choosenIdTreatment);
-                        i.putExtra("id_choosenManager", choosenIdManager);
-                        i.putExtra("id_choosenDate", choosenDate);
-
-                        startActivity(i);
-                    }
-                });
+//                continueButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
+//                        emailClient = getIntent().getStringExtra("email_currentClient");
+//                        System.out.println("in book Date emailClient= "+emailClient);
+//                        choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
+//                        choosenIdManager = getIntent().getStringExtra("id_choosenManager");
+//                        System.out.println("in book Date choosenIdTreatment= "+choosenIdTreatment);
+//                        System.out.println("in book DAte choosenIdManager= "+choosenIdManager);
+//                        System.out.println("in book DAte choosenDate= "+choosenDate);
+//
+//                        Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
+//                        i.putExtra("email_currentClient", emailClient);
+//                        i.putExtra("id_choosenTreatment", choosenIdTreatment);
+//                        i.putExtra("id_choosenManager", choosenIdManager);
+//                        i.putExtra("id_choosenDate", choosenDate);
+//
+//                        startActivity(i);
+//                    }
+//                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
 
         });
-//        continueButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("in BookTreatment continueButton$$$$$$$$$$$$");
-//                String emailClient = getIntent().getStringExtra("email_currntClient");
-//                String choosenIdTreatment = getIntent().getStringExtra("id_choosenTreatment");
-//                String choosenIdManager = getIntent().getStringExtra("id_choosenManager");
-//
-//                Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
-//                i.putExtra("email_currntClient", emailClient);
-//                i.putExtra("id_choosenTreatment", choosenIdTreatment);
-//                i.putExtra("id_choosenManager", choosenIdManager);
-//                i.putExtra("id_choosenDate", choosenDate);
-//
-//                startActivity(i);
-//            }
-//        });
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("in BookDate continueButton$$$$$$$$$$$$");
+
+                Intent i = new Intent(BookDateActivity.this, BookTimeOfDateActivity.class);
+                i.putExtra("email_currentClient", emailClient);
+                i.putExtra("id_choosenTreatment", choosenIdTreatment);
+                i.putExtra("id_choosenManager", choosenIdManager);
+                i.putExtra("id_choosenDate", choosenDate);
+
+                startActivity(i);
+            }
+      });
     }
 
 

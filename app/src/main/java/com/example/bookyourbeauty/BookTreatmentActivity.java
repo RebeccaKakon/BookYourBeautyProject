@@ -92,8 +92,7 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
         });
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v) { System.out.println("in book Treatment choosenIdTreatment= "+choosenIdTreatment);
             Intent i = new Intent(BookTreatmentActivity.this, BookManagerActivity.class);
             i.putExtra("email_currentClient", emailClient);
             i.putExtra("id_choosenTreatment", choosenIdTreatment);
