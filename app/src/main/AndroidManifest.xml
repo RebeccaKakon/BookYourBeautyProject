@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookYourBeauty">
-        <activity android:name=".AddInformation"></activity>
+        <activity android:name=".ViewInfoForManagerOnlyActivity"></activity>
+        <activity android:name=".DeleteInfoActivity" />
+        <activity android:name=".viewInfoActivity" />
+        <activity android:name=".AddInformation" />
         <activity android:name=".viewManagerAppointment" />
         <activity android:name=".Book_TheAppointmentActivity" />
         <activity android:name=".DeleteAppointment" />

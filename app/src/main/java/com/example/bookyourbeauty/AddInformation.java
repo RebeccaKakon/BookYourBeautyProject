@@ -17,9 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AddInformation extends AppCompatActivity {
+public class AddInformation extends AppCompatActivity {//implements View.OnClickListener
 
-    Button deleteInfo;
+    Button wieInfoo;
     EditText addInfo;
     Button add;
     DatabaseReference rootReference;
@@ -38,6 +38,7 @@ public class AddInformation extends AppCompatActivity {
 
         addInfo = (EditText) findViewById(R.id.addInfo);
         add = (Button) findViewById(R.id.add);
+        wieInfoo= (Button) findViewById(R.id.wieInfoo);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +52,9 @@ public class AddInformation extends AppCompatActivity {
 
 
                 info.setinformation(managerinfo);
+                info.setMId(managerId);
+                wieInfoo.setOnClickListener(this);
+
 
 
                 rootNode=FirebaseDatabase.getInstance();
@@ -92,5 +96,28 @@ public class AddInformation extends AppCompatActivity {
             }
 
         });
+        wieInfoo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AddInformation.this, ViewInfoForManagerOnlyActivity.class);
+                i.putExtra("email", managerId);
+                startActivity(i);
+
+            }
+
+
+
+        });
     }
+//    @Override
+//    public void onClick(View v) {
+//        if(v==wieInfoo){
+//            Intent intent= new Intent(this,ViewInfoForManagerOnlyActivity.class);
+//
+//            startActivity(intent);
+//
+//
+//
+//        }
+//    }
 }

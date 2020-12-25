@@ -55,7 +55,7 @@ public class viewManagerAppointment extends AppCompatActivity implements View.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_manager_appointment);
-        go= (Button) findViewById(R.id.Go) ;
+        go= (Button) findViewById(R.id.delete) ;
 
         System.out.println("new page");
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
