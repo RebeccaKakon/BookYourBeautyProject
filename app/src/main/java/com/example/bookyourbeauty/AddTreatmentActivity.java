@@ -65,7 +65,7 @@ public class AddTreatmentActivity extends AppCompatActivity {
                             }
                         }
 
-                        String id="treatment"+newTreatment.getIdTreatment();
+                        String id=choosentreatmentName;
                         System.out.println("newTreatment.getTreatmentName()=  "+newTreatment.getTreatmentName());
                         rootReference.child(id).setValue(newTreatment); //add to firebase//child("Treatments")
 
