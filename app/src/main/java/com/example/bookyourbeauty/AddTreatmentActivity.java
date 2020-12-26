@@ -21,8 +21,10 @@ public class AddTreatmentActivity extends AppCompatActivity {
     private Button addTreatment;
     private EditText treatmentName;
     private String choosentreatmentName;
+    String choosenPrice;
     private DatabaseReference rootReference;
     private FirebaseDatabase rootNode;
+    EditText treatmenPrice;
 
     Treatment newTreatment;
 
@@ -32,6 +34,8 @@ public class AddTreatmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_treatment);
         addTreatment = (Button) findViewById(R.id.AddTreatment);
         treatmentName = (EditText) findViewById(R.id.TreatmentName);
+        treatmenPrice = (EditText) findViewById(R.id.treatmenPrice);
+
 
 
         addTreatment.setOnClickListener(new View.OnClickListener() {
@@ -41,9 +45,11 @@ public class AddTreatmentActivity extends AppCompatActivity {
                 rootNode=FirebaseDatabase.getInstance();
 
                 choosentreatmentName= treatmentName.getText().toString();
+                choosenPrice= treatmenPrice.getText().toString();
+
 
                 rootReference=rootNode.getReference();
-                newTreatment = new Treatment(choosentreatmentName);
+                newTreatment = new Treatment(choosentreatmentName,choosenPrice);
 
                 rootNode=FirebaseDatabase.getInstance();
                 rootReference=rootNode.getReference("Treatments");

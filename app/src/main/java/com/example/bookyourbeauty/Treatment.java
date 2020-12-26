@@ -15,24 +15,34 @@ public class Treatment<countIdTreatment> {
     private Calendar time;
     private String treatmentName;
     private int idTreatment;
+    private String price;
     //static int countIdTreatment=0;
 
     public Treatment(){
         this.time=new GregorianCalendar();
     }
 
-    public Treatment(Calendar currTime,String currName, int currId){
+    public Treatment(Calendar currTime,String currName, int currId, String price){
         this.time=currTime;
         this.treatmentName=currName;
         this.idTreatment=currId;
+        this.price= price;
     }
-    public Treatment(String currName){
+    public Treatment(String currName, String price){
         this.treatmentName=currName;
         this.time=new GregorianCalendar();
         this.time.add(Calendar.MINUTE,30);
         this.idTreatment=findIdTreatment(currName);
+        this.price=price;
                 //countIdTreatment;
         //countIdTreatment++;
+    }
+    public String  getprice() {
+        return price;
+    }
+
+    public void setprice(String price) {
+        this.price = price;
     }
 
     private int findIdTreatment(String treatmentName) {
