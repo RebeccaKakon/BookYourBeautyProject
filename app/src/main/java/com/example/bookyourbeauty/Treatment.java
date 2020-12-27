@@ -16,7 +16,7 @@ public class Treatment<countIdTreatment> {
     private String treatmentName;
     private int idTreatment;
     private String price;
-    //static int countIdTreatment=0;
+    static int countIdTreatment=0;
 
     public Treatment(){
         this.time=new GregorianCalendar();
@@ -32,7 +32,8 @@ public class Treatment<countIdTreatment> {
         this.treatmentName=currName;
         this.time=new GregorianCalendar();
         this.time.add(Calendar.MINUTE,30);
-        this.idTreatment=findIdTreatment(currName);
+        this.idTreatment=countIdTreatment;
+        countIdTreatment++;
         this.price=price;
                 //countIdTreatment;
         //countIdTreatment++;
@@ -107,10 +108,7 @@ public class Treatment<countIdTreatment> {
 
     @Override
     public String toString() {
-        return "Treatment{" +
-                "time of the treatment='" + time + '\'' +
-                ", Treatment name='" + treatmentName + '\'' +
-                ", Treatment id='" + idTreatment ;
+        return "treatment="+treatmentName + " \n" + "price=" +price +" \n"+ "id="+idTreatment;
     }
 
 

@@ -24,11 +24,12 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
     ListView ViewP;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    DatabaseReference referenceRoot;
+
     Button delete;
     ArrayList<String> arrayList=new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     String item;
-    DatabaseReference referenceRoot;
     Info info= new Info();
     String Tnamenew="";
     String idAppo;
@@ -42,7 +43,7 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_info_for_manager_only);
 
-        delete= (Button) findViewById(R.id.delete) ;
+        delete= (Button) findViewById(R.id.back) ;
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         ViewP =(ListView)findViewById(R.id.viewP);
         ViewP.setAdapter(arrayAdapter);

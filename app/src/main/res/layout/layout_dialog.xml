@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/edditTreatment"
+        android:layout_width="68dp"
+        android:layout_height="72dp"
+        android:text="edittreatment" />
+
+    <Button
+        android:id="@+id/viewTreatment"
+        android:layout_width="56dp"
+        android:layout_height="64dp"
+        android:text="view treatment" />
+</RelativeLayout>

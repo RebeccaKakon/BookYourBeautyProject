@@ -1,0 +1,134 @@
+package com.example.bookyourbeauty;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+public class ViewTreatmentForManagerActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ListView ViewP;
+    ArrayList<String> arrayList=new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
+    String item;
+    Treatment T= new Treatment();
+    Button back;
+    Button editPrice;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+    DatabaseReference referenceRoot;
+    String tname;
+    String Memail;
+
+    public String id_func (String name,String search){
+        System.out.println("name= "+name);
+        int index_id=name.indexOf(search);
+        index_id+=search.length();
+        String answer="";
+        while(name.charAt(index_id)!=',' && index_id<name.length()-1 && name.charAt(index_id)!=' '){
+            System.out.print(name.charAt(index_id));
+            answer+=name.charAt(index_id);
+            index_id++;
+        }
+        System.out.println("id of busniess item is ????="+answer);
+        return answer;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Memail= getIntent().getStringExtra("email");
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("Treatments");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_treatment_for_manager);
+        back= (Button) findViewById(R.id.back) ;
+        editPrice= (Button) findViewById(R.id.editPrice) ;
+
+        arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
+        ViewP =(ListView)findViewById(R.id.viewP);
+        ViewP.setAdapter(arrayAdapter);
+        back.setOnClickListener(this);
+        editPrice.setOnClickListener(this);
+
+
+        referenceRoot=rootNode.getReference("Treatments");
+        referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                //go through all appointments
+
+                for (DataSnapshot s : snapshot.getChildren()) {
+                    String tempTreatment=s.child("treatmentName").getValue().toString();;
+
+                    //if appointment is free add to list
+
+                    if (tempTreatment.equals("stam")) {
+                        break;
+                    }
+                    String treatmentName = s.child("treatmentName").getValue().toString();
+                    String treatmentPrice = s.child("price").getValue().toString();
+
+
+                    T.setTreatmentName(treatmentName);
+                    T.setprice(treatmentPrice);
+
+                    arrayList.add(T.toString());
+                    arrayAdapter.notifyDataSetChanged();
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        ViewP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                item=(String)adapterView.getItemAtPosition(i);//This will give you the same result of viewHolder.LL.setOnClickListener as you are doing
+                tname=id_func(item,"treatment=");
+//                System.out.println("item====== "+item);
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v== editPrice) {
+            if (Memail.equals("yarden@gmail.com")) {
+
+                Intent intent = new Intent(this, EditTreatment.class);
+                intent.putExtra("treatment_name", tname);
+//            intent.putExtra("Tneame",Tname);
+                startActivity(intent);
+            }
+            else
+                Toast.makeText(getApplicationContext(),"only yarden can change the date", Toast.LENGTH_SHORT).show();
+        }
+        if (v == back) {
+            Intent intent = new Intent(this, ClientOptionsActivity.class);
+            startActivity(intent);
+        }
+    }
+}

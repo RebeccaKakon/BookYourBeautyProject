@@ -38,7 +38,7 @@ public class viewInfoActivity extends AppCompatActivity implements View.OnClickL
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_info);
-        back= (Button) findViewById(R.id.delete) ;
+        back= (Button) findViewById(R.id.back) ;
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         ViewP =(ListView)findViewById(R.id.viewP);
         ViewP.setAdapter(arrayAdapter);

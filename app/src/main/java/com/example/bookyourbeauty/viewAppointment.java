@@ -55,7 +55,7 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
         reference = rootNode.getReference("Appointment");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_appointment);
-        go= (Button) findViewById(R.id.delete) ;
+        go= (Button) findViewById(R.id.back) ;
 
         System.out.println("new page");
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);

@@ -14,6 +14,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     Button Addinformation;
     Button viewAppointment;
     Button calendar;
+    Button editTretment;
     String emailManager;
 
     @Override
@@ -31,6 +32,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         AddTreatment.setOnClickListener(this);
         Addinformation.setOnClickListener(this);
         viewAppointment.setOnClickListener(this);
+        editTretment.setOnClickListener(this);
 
     }
 
@@ -39,6 +41,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         Addinformation= (Button) findViewById(R.id.information);
         viewAppointment= (Button) findViewById(R.id.viewAppointment);
         calendar = (Button) findViewById(R.id.Calender);
+        editTretment = (Button) findViewById(R.id.editTretment);
     }
 
 
@@ -64,5 +67,33 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
 
             startActivity(i);
         }
+        else if(v==editTretment){
+            Intent intent=new Intent(this,ViewTreatmentForManagerActivity.class);
+            intent.putExtra("email", emailManager);
+            startActivity(intent);
+//            openDialog();
+        }
     }
+
+
+//    public void openDialog(){
+//        Dialog dialog= new Dialog();
+////        dialog.setContenView(R.layout.layout_dialog);
+//        dialog.setCancelable(true);
+//        Button edditTreatment=(Button) findViewById(R.id.edditTreatment);
+//        Button viewTreatment=(Button) findViewById(R.id.viewTreatment);
+//
+//        edditTreatment.setOnClickListener((view) -> {
+//            Intent intent=new Intent(this,EditTreatment.class);
+//            startActivity(intent);
+//
+//        });
+//        viewTreatment.setOnClickListener((view) -> {
+//            Intent intent=new Intent(this,ViewTreatmentForManagerActivity.class);
+//            startActivity(intent);
+//
+//        });
+//
+//        dialog.show(getSupportFragmentManager(), "treatment");
+//    }
 }
