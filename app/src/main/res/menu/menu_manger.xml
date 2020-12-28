@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/Home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/Add_treatment"
+        android:title="Add Treatment"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Add_information"
+        android:title="Add Information"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/View_appointment"
+        android:title="View Appointment"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Add_working_time"
+        android:title="Add Working Time"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Edit_treatment"
+        android:title="Edit Treatment"
+        app:showAsAction="never"
+        />
+
+
+</menu>

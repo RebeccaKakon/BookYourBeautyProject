@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.bookyourbeauty.BookTreatmentActivity"
+    >
+
+    <item
+        android:id="@+id/Home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/Book_appointment"
+        android:title="Book Appointment"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/View_appointment"
+        android:title="View Appointment"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Manager_information"
+        android:title="Manager Information"
+        app:showAsAction="never"
+        />
+
+</menu>

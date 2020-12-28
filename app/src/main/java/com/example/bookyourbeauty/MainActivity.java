@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView maneger;
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         maneger= (ImageView) findViewById(R.id.Manager_imageView);
         client= (ImageView) findViewById(R.id.Client_imageView);
     }
+
 
 
     @Override

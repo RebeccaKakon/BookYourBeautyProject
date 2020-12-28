@@ -2,6 +2,9 @@ package com.example.bookyourbeauty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -152,6 +155,37 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
 
 
 
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_option, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Book_appointment:
+                Intent ii= new Intent(this,BookTreatmentActivity.class);
+                startActivity(ii);
+                return true;
+            case R.id.View_appointment:
+                Intent i= new Intent(this,viewAppointment.class);
+                startActivity(i);
+                return true;
+            case R.id.Manager_information:
+                Intent iii= new Intent(this,viewInfoActivity.class);
+                startActivity(iii);
+                return true;
+            case R.id.Home:
+                Intent iiii= new Intent(this,MainActivity.class);
+                startActivity(iiii);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

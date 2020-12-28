@@ -2,6 +2,9 @@ package com.example.bookyourbeauty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,4 +86,44 @@ public class AddTreatmentActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_manger, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Add_treatment:
+                Intent ii= new Intent(this,AddTreatmentActivity.class);
+                startActivity(ii);
+                return true;
+            case R.id.Add_information:
+                Intent i= new Intent(this,AddInformation.class);
+                startActivity(i);
+                return true;
+            case R.id.View_appointment:
+                Intent iii= new Intent(this,viewManagerAppointment.class);
+                startActivity(iii);
+                return true;
+            case R.id.Add_working_time:
+                Intent iiiii= new Intent(this,choosTimeAndDate.class);
+                startActivity(iiiii);
+                return true;
+            case R.id.Edit_treatment:
+                Intent iiiiii= new Intent(this,ViewTreatmentForManagerActivity.class);
+                startActivity(iiiiii);
+                return true;
+            case R.id.Home:
+                Intent iiii= new Intent(this,MainActivity.class);
+                startActivity(iiii);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
