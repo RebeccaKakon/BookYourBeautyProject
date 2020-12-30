@@ -1,8 +1,14 @@
 package com.example.bookyourbeauty;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +37,7 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
 
     DatabaseReference reference;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,8 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
 //        email= (EditText)findViewById(R.id.EmailAddress);
 //        password= (EditText) findViewById(R.id.Password);
 //        login= (Button) findViewById(R.id.Login);
+
+
 
         System.out.println("********************************** ");
 
@@ -114,4 +123,7 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 }

@@ -1,9 +1,15 @@
 package com.example.bookyourbeauty;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,10 +59,12 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
 
 
         ok_button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                 findIdAppo_And_SetIDClient(emailClient,choosenIdTreatment,choosenIdManager,choosenDate,choosenTime);
+                createChannel();
                 Intent intent = new Intent(Book_TheAppointmentActivity.this, ClientOptionsActivity.class);
                 startActivity(intent);
             }
@@ -114,9 +122,51 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void createChannel()
+    {
+        NotificationManager mNotificationManager=getSystemService(NotificationManager.class);
+        String id = "CHANNEL";
+        CharSequence name = "channel appointment";
+        String description = "This is the channel appointment";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel(id, name, importance);
+        mChannel.setDescription(description);
+        mNotificationManager.createNotificationChannel(mChannel);
+        addNotification(id);
+    }
+
+    private void addNotification(String channel)
+    {
+        Notification.Builder notificationBuilder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            notificationBuilder = new Notification.Builder(this, channel);
+        }
+        else
+        {
+            notificationBuilder = new Notification.Builder(this);
+        }
+
+        Intent landingIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0,
+                landingIntent,0);
+
+        String text="Your appointment has been successfully registered!\n Do not forget to come with a mask.";
+        Notification notification = notificationBuilder
+                .setContentTitle("Appointment confirmation")
+                .setSmallIcon(R.drawable.ic_notifications)
+                .setContentIntent(pendingLandingIntent)
+                .setAutoCancel(true)
+                .setStyle(new Notification.BigTextStyle().bigText(text))
+                .setContentText(text).build();
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify((int) System.currentTimeMillis(), notification);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

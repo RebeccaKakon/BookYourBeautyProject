@@ -1,8 +1,14 @@
 package com.example.bookyourbeauty;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -80,6 +86,7 @@ public class RegisterManagerActivity extends AppCompatActivity {
                 manager.setLast_name(lastname);
                 auth.createUserWithEmailAndPassword(manager.getEmail(), manager.getPassword())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
@@ -89,6 +96,7 @@ public class RegisterManagerActivity extends AppCompatActivity {
                                     FirebaseUser user = auth.getCurrentUser();
                                     String id = user.getUid();
                                     reference.child("Managers").child(id).setValue(manager);
+                                    createChannel();
                                     //updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -127,4 +135,50 @@ public class RegisterManagerActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void createChannel()
+    {
+        NotificationManager mNotificationManager=getSystemService(NotificationManager.class);
+        String id = "CHANNEL";
+        CharSequence name = "Welcome channel for manager";
+        String description = "This is the welcome channel";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel(id, name, importance);
+        mChannel.setDescription(description);
+        mNotificationManager.createNotificationChannel(mChannel);
+        addNotification(id);
+    }
+
+    private void addNotification(String channel)
+    {
+        Notification.Builder notificationBuilder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            notificationBuilder = new Notification.Builder(this, channel);
+        }
+        else
+        {
+            notificationBuilder = new Notification.Builder(this);
+        }
+
+        Intent landingIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0,
+                landingIntent,0);
+        String text="Glad you joined us!\n Do not forget to update your activity days (:";
+
+        Notification notification = notificationBuilder
+                .setContentTitle("Welcome to BookYourBeauty")
+                .setSmallIcon(R.drawable.ic_notifications)
+                .setContentIntent(pendingLandingIntent)
+                .setAutoCancel(true)
+                .setStyle(new Notification.BigTextStyle().bigText(text))
+                .setContentText(text).build();
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify((int) System.currentTimeMillis(), notification);
+    }
+
+
 }
