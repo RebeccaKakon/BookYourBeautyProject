@@ -16,10 +16,13 @@ public class Treatment<countIdTreatment> {
     private String treatmentName;
     private int idTreatment;
     private String price;
+    private String timeT;
+
     static int countIdTreatment=0;
 
     public Treatment(){
-        this.time=new GregorianCalendar();
+
+//        this.time=new GregorianCalendar();
     }
 
     public Treatment(Calendar currTime,String currName, int currId, String price){
@@ -81,6 +84,13 @@ public class Treatment<countIdTreatment> {
 
 
     }
+    public String gettimeT() {
+        return timeT;
+    }
+
+    public void settimeT(String timeT) {
+        this.timeT = timeT;
+    }
 
     public Calendar getTime() {
         return time;
@@ -109,6 +119,10 @@ public class Treatment<countIdTreatment> {
     @Override
     public String toString() {
         return "treatment="+treatmentName + " \n" + "price=" +price +" \n"+ "id="+idTreatment;
+    }
+
+    public String toStringView() {
+        return "treatment="+treatmentName + " \n" + "price=" +price +" \n"+ "treatment time="+timeT;
     }
 
 

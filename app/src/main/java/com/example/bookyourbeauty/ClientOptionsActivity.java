@@ -15,6 +15,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
     Button bookAppo;
     Button viewAppo;
     Button viewInfo;
+    Button viewTreatment;
 
 
     String emailClient;
@@ -35,6 +36,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         bookAppo.setOnClickListener(this);
         viewAppo.setOnClickListener(this);
         viewInfo.setOnClickListener(this);
+        viewTreatment.setOnClickListener(this);
 
 
     }
@@ -44,6 +46,9 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         bookAppo= (Button) findViewById(R.id.bookAppointment);
         viewAppo= (Button) findViewById(R.id.viewAppointment);
         viewInfo= (Button) findViewById(R.id.viewInfo);
+        viewTreatment= (Button) findViewById(R.id.viewTreatments);
+
+
 
     }
 
@@ -63,6 +68,11 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         }
         else if(v==viewAppo){
             Intent i = new Intent(this,viewAppointment.class);//viewAppointment
+            i.putExtra("email_currentClient", emailClient);///////// new
+            startActivity(i);
+        }
+        else if(v==viewTreatment){
+            Intent i = new Intent(this,viewTforClient.class);//viewAppointment
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }

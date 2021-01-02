@@ -35,19 +35,6 @@ public class viewManagerAppointment extends AppCompatActivity implements View.On
     String Tnamenew="";
     String idAppo;
 
-//    public String id_func (String name,String search){
-//        System.out.println("name= "+name);
-//        int index_id=name.indexOf(search);
-//        index_id+=search.length();
-//        String answer="";
-//        while(name.charAt(index_id)!=',' && index_id<name.length()-1 && name.charAt(index_id)!=' '){
-//            System.out.print(name.charAt(index_id));
-//            answer+=name.charAt(index_id);
-//            index_id++;
-//        }
-//        System.out.println("id of busniess item is ????="+answer);
-//        return answer;
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
