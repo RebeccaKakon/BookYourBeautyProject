@@ -54,6 +54,7 @@
         android:layout_marginRight="100dp"
         android:layout_marginBottom="27dp"
         android:ems="10"
+        android:hint="Treatment Price"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/AddTreatment"
         app:layout_constraintEnd_toEndOf="parent"
