@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +28,7 @@ public class viewManagerAppointment extends AppCompatActivity implements View.On
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     Button go;
+    TextView text_futueAppo;
     ArrayList<String> arrayList=new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     String item;
@@ -46,7 +48,8 @@ public class viewManagerAppointment extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_manager_appointment);
         go= (Button) findViewById(R.id.back) ;
-
+        text_futueAppo= (TextView) findViewById(R.id.textView_futureAppo
+        ) ;
         System.out.println("new page");
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         ViewP =(ListView)findViewById(R.id.viewP);

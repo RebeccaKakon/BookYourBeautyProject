@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,7 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
     DatabaseReference referenceRoot;
 
     Button delete;
+    TextView text_infoManager;
     ArrayList<String> arrayList=new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     String item;
@@ -47,6 +49,8 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_view_info_for_manager_only);
 
         delete= (Button) findViewById(R.id.back) ;
+        text_infoManager= (TextView) findViewById(R.id.textView_infoForManager) ;
+
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         ViewP =(ListView)findViewById(R.id.viewP);
         ViewP.setAdapter(arrayAdapter);

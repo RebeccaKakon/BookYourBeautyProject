@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class choosTimeAndDate extends AppCompatActivity {
     EditText date;
     Button save;
+    TextView text_choose;
 
     FirebaseDatabase rootNode;
     DatabaseReference rootReference;
@@ -133,6 +135,7 @@ int end;
         managerId= getIntent().getStringExtra("email");
         save = (Button) findViewById(R.id.saveCreat);
         date= (EditText) findViewById(R.id.chooseDate);
+        text_choose= (TextView) findViewById(R.id.textView_choose);
         startHour_spinner = (Spinner) findViewById(R.id.StartHour_spinner);
         endHour_spinner= (Spinner) findViewById(R.id.EndHour_spinner);
 

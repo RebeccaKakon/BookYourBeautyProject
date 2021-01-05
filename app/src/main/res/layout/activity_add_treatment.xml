@@ -38,7 +38,7 @@
         android:layout_marginRight="127dp"
         android:layout_marginBottom="268dp"
         android:text="Add Treatment"
-        app:backgroundTint="@color/teal_200"
+        app:backgroundTint="#9C27B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,11 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +27,7 @@ public class viewTforClient extends AppCompatActivity implements View.OnClickLis
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     Button back;
+    TextView text_treatmentOptions;
     ArrayList<String> arrayList=new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     String item;
@@ -42,6 +42,7 @@ public class viewTforClient extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tfor_client);
         back= (Button) findViewById(R.id.back) ;
+        text_treatmentOptions= (TextView) findViewById(R.id.textView_treatmentsClient) ;
         arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         ViewP =(ListView)findViewById(R.id.viewP);
         ViewP.setAdapter(arrayAdapter);
