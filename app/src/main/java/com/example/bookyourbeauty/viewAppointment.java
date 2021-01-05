@@ -52,6 +52,7 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("on create view appo");
         String clientId= getIntent().getStringExtra("email_currentClient");
 
         rootNode = FirebaseDatabase.getInstance();
@@ -65,9 +66,6 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
         ViewP =(ListView)findViewById(R.id.viewP);
         ViewP.setAdapter(arrayAdapter);
         go.setOnClickListener(this);
-
-
-
 
         referenceRoot=rootNode.getReference("Appointment");
         referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
