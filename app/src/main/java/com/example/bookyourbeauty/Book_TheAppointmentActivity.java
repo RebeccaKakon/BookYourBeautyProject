@@ -190,10 +190,15 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
                 Intent iii= new Intent(this,viewInfoActivity.class);
                 startActivity(iii);
                 return true;
-            case R.id.Home:
+            case R.id.Logout:
                 Intent iiii= new Intent(this,MainActivity.class);
                 startActivity(iiii);
                 return true;
+                case R.id.Home:
+                Intent iiiii= new Intent(this,ClientOptionsActivity.class);
+                startActivity(iiiii);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

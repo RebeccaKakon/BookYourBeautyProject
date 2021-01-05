@@ -30,4 +30,10 @@
         app:showAsAction="never"
         />
 
+    <item
+        android:id="@+id/Logout"
+        android:title="Logout"
+        app:showAsAction="never"
+        />
+
 </menu>

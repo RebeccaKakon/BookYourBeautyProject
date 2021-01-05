@@ -78,44 +78,24 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_option, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Home:
-                Intent i= new Intent(this,MainActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-//    public void openDialog(){
-//        Dialog dialog= new Dialog();
-////        dialog.setContenView(R.layout.layout_dialog);
-//        dialog.setCancelable(true);
-//        Button edditTreatment=(Button) findViewById(R.id.edditTreatment);
-//        Button viewTreatment=(Button) findViewById(R.id.viewTreatment);
-//
-//        edditTreatment.setOnClickListener((view) -> {
-//            Intent intent=new Intent(this,EditTreatment.class);
-//            startActivity(intent);
-//
-//        });
-//        viewTreatment.setOnClickListener((view) -> {
-//            Intent intent=new Intent(this,ViewTreatmentForManagerActivity.class);
-//            startActivity(intent);
-//
-//        });
-//
-//        dialog.show(getSupportFragmentManager(), "treatment");
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.home_option, menu);
+//        return true;
 //    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.Home:
+//                Intent i= new Intent(this,MainActivity.class);
+//                startActivity(i);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+
+
 }

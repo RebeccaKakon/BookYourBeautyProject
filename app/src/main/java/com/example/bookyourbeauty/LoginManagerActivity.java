@@ -81,7 +81,7 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
                                 startActivity(intent);
                                 break;
                             } else {
-                                Toast.makeText(LoginManagerActivity.this, "you typ a Wrong email or password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginManagerActivity.this, "you type a Wrong email or password", Toast.LENGTH_SHORT).show();
                             }
                             Intent intent2 = new Intent(v.getContext(), EnterManegerActivity.class);
                             startActivity(intent2);
@@ -105,25 +105,25 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_option, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Home:
-                Intent i= new Intent(this,MainActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.home_option, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.Home:
+//                Intent i= new Intent(this,MainActivity.class);
+//                startActivity(i);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+//
 
 
 }

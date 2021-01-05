@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
                                     startActivity(intent);
                                     break;
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "you typ a Wrong email or password", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "you type a Wrong email or password", Toast.LENGTH_SHORT).show();
                                 }
                                 Intent intent2 = new Intent(v.getContext(), EnterClientActivity.class);
                                 startActivity(intent2);
@@ -140,25 +140,25 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
         login= (Button) findViewById(R.id.Login);
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_option, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Home:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.home_option, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.Home:
+//                Intent i = new Intent(this, MainActivity.class);
+//                startActivity(i);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
 
 }

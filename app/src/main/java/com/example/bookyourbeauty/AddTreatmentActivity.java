@@ -72,7 +72,7 @@ public class AddTreatmentActivity extends AppCompatActivity {
                         System.out.println("newTreatment.getTreatmentName()=  "+newTreatment.getTreatmentName());
                         rootReference.child(id).setValue(newTreatment); //add to firebase//child("Treatments")
 
-                        Toast.makeText(AddTreatmentActivity.this, "your add treatment was seccssed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddTreatmentActivity.this, "your add treatment was succeed", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(AddTreatmentActivity.this, ManagerOptionsActivity.class);
                         startActivity(intent);
@@ -118,8 +118,12 @@ public class AddTreatmentActivity extends AppCompatActivity {
                 startActivity(iiiiii);
                 return true;
             case R.id.Home:
-                Intent iiii= new Intent(this,MainActivity.class);
+                Intent iiii= new Intent(this,ManagerOptionsActivity.class);
                 startActivity(iiii);
+                return true;
+            case R.id.Logout:
+                Intent intent= new Intent(this,MainActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

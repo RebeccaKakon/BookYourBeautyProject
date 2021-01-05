@@ -159,8 +159,12 @@ public class BookDateActivity extends AppCompatActivity {
                 startActivity(iii);
                 return true;
             case R.id.Home:
-                Intent iiii= new Intent(this,MainActivity.class);
+                Intent iiii= new Intent(this,ClientOptionsActivity.class);
                 startActivity(iiii);
+                return true;
+            case R.id.Logout:
+                Intent iiiii= new Intent(this,MainActivity.class);
+                startActivity(iiiii);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

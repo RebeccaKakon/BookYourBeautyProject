@@ -1,12 +1,15 @@
 package com.example.bookyourbeauty;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +19,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
     Button viewAppo;
     Button viewInfo;
     Button viewTreatment;
+    Button whatsapp;
 
 
     String emailClient;
@@ -30,7 +34,45 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
 
         setButtons();
         listenButtons();
+
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean installed = isAppInstalled("com.whatsapp");
+                String num = "+972549195952";
+                String text = "Hello, I need help with BookYourBeauty app";
+
+                if(installed)
+                {
+                 Intent i = new Intent(Intent.ACTION_VIEW);
+                 i.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + num + "&text=" + text));
+                 startActivity(i);
+                }
+                else{
+                    Toast.makeText(ClientOptionsActivity.this , "whatsapp is not installed!" , Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
+
+    private boolean isAppInstalled(String s) {
+        PackageManager pk = getPackageManager();
+        boolean is_installed;
+
+        try {
+            pk.getPackageInfo(s, pk.GET_ACTIVITIES);
+            is_installed = true;
+
+        } catch (PackageManager.NameNotFoundException e) {
+            is_installed = false;
+            e.printStackTrace();
+        }
+
+        return is_installed;
+    }
+
     private void listenButtons() {
         profile.setOnClickListener(this);
         bookAppo.setOnClickListener(this);
@@ -47,6 +89,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         viewAppo= (Button) findViewById(R.id.viewAppointment);
         viewInfo= (Button) findViewById(R.id.viewInfo);
         viewTreatment= (Button) findViewById(R.id.viewTreatments);
+        whatsapp= (Button) findViewById(R.id.whatsapp);
 
 
 
@@ -82,23 +125,23 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             startActivity(i);
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_option, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Home:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.home_option, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.Home:
+//                Intent i = new Intent(this, ClientOptionsActivity.class);
+//                startActivity(i);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 }

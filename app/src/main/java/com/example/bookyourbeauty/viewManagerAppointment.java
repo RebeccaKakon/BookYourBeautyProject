@@ -176,8 +176,12 @@ public class viewManagerAppointment extends AppCompatActivity implements View.On
                 startActivity(iiiiii);
                 return true;
             case R.id.Home:
-                Intent iiii = new Intent(this, MainActivity.class);
+                Intent iiii = new Intent(this, ManagerOptionsActivity.class);
                 startActivity(iiii);
+                return true;
+            case R.id.Logout:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
