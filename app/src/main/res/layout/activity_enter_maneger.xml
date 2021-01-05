@@ -44,6 +44,7 @@
         android:id="@+id/welcome"
         android:layout_width="381dp"
         android:layout_height="95dp"
+        android:layout_marginTop="100dp"
         android:text="Welcome Manager"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"

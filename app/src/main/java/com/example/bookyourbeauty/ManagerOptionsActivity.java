@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     Button viewAppointment;
     Button calendar;
     Button editTretment;
+    TextView textView;
     String emailManager;
 
     @Override
@@ -45,6 +47,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
         viewAppointment= (Button) findViewById(R.id.viewAppointment);
         calendar = (Button) findViewById(R.id.Calender);
         editTretment = (Button) findViewById(R.id.editTretment);
+        textView = (TextView) findViewById(R.id.TextView_managerOptions);
     }
 
 

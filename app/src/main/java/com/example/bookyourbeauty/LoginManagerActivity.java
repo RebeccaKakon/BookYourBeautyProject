@@ -41,13 +41,11 @@ public class LoginManagerActivity extends AppCompatActivity     {//implements Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_manager);
         setEditText();
 //        email= (EditText)findViewById(R.id.EmailAddress);
 //        password= (EditText) findViewById(R.id.Password);
 //        login= (Button) findViewById(R.id.Login);
-
-
 
         System.out.println("********************************** ");
 

@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,12 +37,14 @@ public class Book_TheAppointmentActivity extends AppCompatActivity {
     String choosenTime;
 
     Button ok_button;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book__the_appointment);
         ok_button = (Button) findViewById(R.id.Ok_button);
+        textView = (TextView) findViewById(R.id.TextView_enter);
 
 
         emailClient = getIntent().getStringExtra("email_currentClient");

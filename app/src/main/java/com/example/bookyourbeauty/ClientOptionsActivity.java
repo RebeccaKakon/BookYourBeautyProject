@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +21,10 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
     Button viewAppo;
     Button viewInfo;
     Button viewTreatment;
-    Button whatsapp;
-
+    //Button whatsapp;
+    ImageView whatsapp_imageView;
+    TextView textView_support;
+    TextView textViewC;
 
     String emailClient;
 
@@ -35,7 +39,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         setButtons();
         listenButtons();
 
-        whatsapp.setOnClickListener(new View.OnClickListener() {
+        whatsapp_imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -79,6 +83,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         viewAppo.setOnClickListener(this);
         viewInfo.setOnClickListener(this);
         viewTreatment.setOnClickListener(this);
+        whatsapp_imageView.setOnClickListener(this);
 
 
     }
@@ -89,9 +94,10 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
         viewAppo= (Button) findViewById(R.id.viewAppointment);
         viewInfo= (Button) findViewById(R.id.viewInfo);
         viewTreatment= (Button) findViewById(R.id.viewTreatments);
-        whatsapp= (Button) findViewById(R.id.whatsapp);
-
-
+       // whatsapp= (Button) findViewById(R.id.whatsapp);
+        whatsapp_imageView= (ImageView) findViewById(R.id.Whatsapp_imageView);
+        textView_support= (TextView) findViewById(R.id.TextView_technicalSupport);
+        textViewC= (TextView) findViewById(R.id.TextView_clientOption);
 
     }
 
@@ -124,6 +130,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }
+
     }
 //
 //    @Override

@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
     private EditText email;
     private EditText password;
     private Button login;
+    private ImageView clientIcon;
 
     DatabaseReference reference;
 
@@ -138,6 +140,9 @@ public class LoginActivity extends AppCompatActivity     {//implements View.OnCl
         email= (EditText)findViewById(R.id.EmailAddress);
         password= (EditText) findViewById(R.id.Password);
         login= (Button) findViewById(R.id.Login);
+        clientIcon= (ImageView) findViewById(R.id.Client_imageView_Icon);
+
+
 
     }
 //
