@@ -61,13 +61,13 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                //go through all appointments
-
                 for (DataSnapshot s : snapshot.getChildren()) {
                     String currenManagerId;
-
-                    //if appointment is free add to list
                     currenManagerId = s.child("mid").getValue().toString();
+                    if(currenManagerId==null) {
+                        Toast.makeText(getApplicationContext(),"their is no information", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     if (!currenManagerId.equals(managerId)) {
                         break;
                     }

@@ -64,14 +64,14 @@ public class BookDateActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //go through all appointments
                 String currDate;
-                //String currIdClient="";
+                String currIdClient="";
                 for (DataSnapshot currAppo : snapshot.getChildren()) {
                     //if appointment is free add to list
                     currDate= currAppo.child("date_app").getValue().toString();
-//                    if (currAppo.child("idClient").exists()) {
+//                   if (currAppo.child("idClient").exists()) {//delete
 //                        currIdClient = currAppo.child("idClient").getValue().toString();
-//                    }
-                    if (!datesList.contains(currDate) ) {//&& !currIdClient.equals("-") //if this current date is not in the list && the appoinment is not taken by ather client- add it
+//                   }
+                    if (!datesList.contains(currDate) && currIdClient.equals("-")) {//&& currIdClient.equals("-") //if this current date is not in the list && the appoinment is not taken by ather client- add it
                         System.out.println("***********************currDate "+currDate);
                         datesList.add(currDate);//add to the list
                     }

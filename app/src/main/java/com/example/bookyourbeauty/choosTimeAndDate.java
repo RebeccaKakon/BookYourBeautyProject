@@ -285,7 +285,6 @@ int end;
                     currEnd=start+1;
                     System.out.println("start= "+start+" end= "+end+" currEnd= "+currEnd);
                     System.out.println("String.valueOf(start)= "+String.valueOf(start)+" String.valueOf(currEnd)= "+String.valueOf(currEnd));
-
                             while (end>start)
                             {
                                 System.out.println("start= "+start+" end= "+end+" currEnd= "+currEnd);

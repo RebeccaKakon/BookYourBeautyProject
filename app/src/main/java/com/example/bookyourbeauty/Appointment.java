@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 
 public class Appointment {
-    public int idAppo;
+    private int idAppo;
     private String idClient;
     private String  idManager;
     private String idTreatment;
@@ -36,7 +36,7 @@ public class Appointment {
     }
 
     private int restartTheCount() {
-        Appointment tenpAppo=new Appointment();
+        Appointment tenpAppo =new Appointment();
         final int[] lastCount = {0};
         FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
         DatabaseReference referenceRoot = rootNode.getReference("Appointment");
@@ -54,7 +54,7 @@ public class Appointment {
                     }
                 }
                 lastCount[0]++;
-                tenpAppo.setIdAppo(lastCount[0]);
+                tenpAppo.setIdAppoInt(lastCount[0]);
                 System.out.println("tenpAppo= "+tenpAppo.getIdAppo());
             }
             @Override
@@ -66,7 +66,7 @@ public class Appointment {
         return tenpAppo.getIdAppo();
     }
 
-    private void setIdAppo(int id) {
+    private void setIdAppoInt(int id) {
         this.idAppo=id;
     }
 
@@ -133,6 +133,13 @@ public class Appointment {
     public void setIdTreatment(String currId) {
         this.idTreatment = currId;
     }
+
+//    public int getidAppo() {
+//        return idAppo;
+//    }
+//    public void setidAppo(int idAppo) {
+//        this.idAppo = idAppo;
+//    }
 
     @Override
     public String toString() {

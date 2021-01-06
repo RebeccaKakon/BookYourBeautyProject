@@ -122,7 +122,7 @@ public class Treatment<countIdTreatment> {
     }
 
     public String toStringView() {
-        return "treatment="+treatmentName + " \n" + "price=" +price +" \n"+ "treatment time="+timeT;
+        return treatmentName + " \n" + "price=" +price +" \n"+ timeT;
     }
 
 

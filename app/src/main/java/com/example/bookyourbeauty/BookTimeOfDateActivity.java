@@ -76,10 +76,10 @@ public class BookTimeOfDateActivity extends AppCompatActivity {
                 for (DataSnapshot currAppo : snapshot.getChildren()) {
                     //if appointment is free add to list
                     currDate= currAppo.child("date_app").getValue().toString();
-                   // currIdClient=currAppo.child("idClient").getValue().toString();
+                    currIdClient=currAppo.child("idClient").getValue().toString();
                     if (currDate.equals(choosenDate)) {//if this current date is not in the list- add it
                         currStartHour= currAppo.child("startTime").getValue().toString();
-                        if (!timesList.contains(currStartHour)) { //&& !currIdClient.equals("-") //to make sure we dont add more then one && the appoinment is not taken by ather client
+                        if (!timesList.contains(currStartHour)&& currIdClient.equals("-")) { //&& currIdClient.equals("-") //to make sure we dont add more then one && the appoinment is not taken by ather client
                             timesList.add(currStartHour);//add to the list
                         }
                     }

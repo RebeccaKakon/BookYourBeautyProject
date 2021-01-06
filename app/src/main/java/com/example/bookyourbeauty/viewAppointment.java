@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,6 +78,10 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                 for (DataSnapshot s : snapshot.getChildren()) {
                     //if appointment is free add to list
                     currentIdClient= s.child("idClient").getValue().toString();
+                    if(currentIdClient==null) {
+                        Toast.makeText(getApplicationContext(),"their is no appointments booked", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     if (currentIdClient.equals(clientId)) {
                         String startTime=s.child("startTime").getValue().toString();
                         String date_app=s.child("date_app").getValue().toString();
