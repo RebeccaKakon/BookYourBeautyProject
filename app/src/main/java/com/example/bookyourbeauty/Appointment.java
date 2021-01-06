@@ -1,74 +1,28 @@
 package com.example.bookyourbeauty;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import androidx.annotation.NonNull;
-
 public class Appointment {
-    private int idAppo;
+    private String idAppo;
     private String idClient;
     private String  idManager;
-    private String idTreatment;
     private String date_app;
     private String startTime;
     private String endTime;
+    private String IdTreatment;
+    static int countIdAppointment=0;
 
     public Appointment(){
     }
 
-    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId,String clientId,String treatmentId) {
+    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId,String clientId) {
         this.date_app=choosenDate;
         this.startTime=choosenStartTime;
         this.endTime=choosenEndTime;
-       // this.idAppo=countIdAppointment;
-
-//        this.countIdAppointment++;
-
-        this.idAppo=restartTheCount();
-        System.out.println("in the build = "+this.idAppo);
+//        this.idAppo=countIdAppointment;
+        this.countIdAppointment++;
         this.idManager= manaherId;
         this.idClient=clientId;
-        this.idTreatment=treatmentId;
     }
 
-    private int restartTheCount() {
-        Appointment tenpAppo =new Appointment();
-        final int[] lastCount = {0};
-        FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
-        DatabaseReference referenceRoot = rootNode.getReference("Appointment");
-        referenceRoot.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //go through all appointments
-                String currIdAppo;
-                for (DataSnapshot currAppo : snapshot.getChildren()) {
-                    //if appointment is free add to list
-                    currIdAppo = currAppo.child("idAppo").getValue().toString();
-                    if (Integer.parseInt(currIdAppo)> lastCount[0]) {
-                        lastCount[0] = Integer.parseInt(currIdAppo);
-                        System.out.println("lastCount[0]= "+lastCount[0]);
-                    }
-                }
-                lastCount[0]++;
-                tenpAppo.setIdAppoInt(lastCount[0]);
-                System.out.println("tenpAppo= "+tenpAppo.getIdAppo());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-
-        });
-        System.out.println("return tenpAppo= "+tenpAppo.getIdAppo());
-        return tenpAppo.getIdAppo();
-    }
-
-    private void setIdAppoInt(int id) {
-        this.idAppo=id;
-    }
 
 
 //    public Appointment(int idApo,String idClient, String idManager,int idTreatment,String date,String startTime,String endTime){
@@ -80,6 +34,12 @@ public class Appointment {
 //        this.startTime=startTime;
 //        this.endTime=endTime;
 //    }
+public void setIdTreatment(String setIdTreatment) {
+    this.IdTreatment = setIdTreatment;
+}
+    public String  geIdTreatment() {
+        return IdTreatment;
+    }
 
     public void setdate_app(String date_app) {
         this.date_app = date_app;
@@ -102,15 +62,12 @@ public class Appointment {
         this.endTime = endTime;
     }
 
-    public int getIdAppo() {
+    public String  getIdAppo() {
         return idAppo;
     }
-    public void setIdAppo() {
-//        this.idAppo = countIdAppointment;
+    public void setIdAppo(String id) {
+        this.idAppo = id;
 //        countIdAppointment++;
-
-        this.idAppo=restartTheCount();//set the id
-        System.out.println("in the setIdAppo = "+this.idAppo);
     }
 
     public String getIdClient() {
@@ -127,18 +84,12 @@ public class Appointment {
         this.idManager = currId;
     }
 
-    public String getIdTreatment() {
-        return idTreatment;
-    }
-    public void setIdTreatment(String currId) {
-        this.idTreatment = currId;
-    }
-
-//    public int getidAppo() {
-//        return idAppo;
+//    public int getidAppointment() {
+//        return idAppointment;
 //    }
-//    public void setidAppo(int idAppo) {
-//        this.idAppo = idAppo;
+//
+//    public void setidAppointment(int currId) {
+//        this.idAppointment = currId;
 //    }
 
     @Override
@@ -151,4 +102,6 @@ public class Appointment {
                 ", Manager id='" + idManager + '\'' +
                 ", Treatment id='"  ;
     }
+
+
 }

@@ -206,75 +206,10 @@ int end;
 
                 rootNode=FirebaseDatabase.getInstance();
                 rootReference=rootNode.getReference("Appointment");
-//                rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot postSnapshot : snapshot.getChildren() ) {
-//                            System.out.println("in loop for date********************");
-//
-//                            //from DB
-//                            String TempDate= (String)postSnapshot.child("date_app").getValue().toString();
-////                            String start = (String) Objects.requireNonNull(postSnapshot.child("start").getValue()).toString();
-////                            String appointmenEndTime = (String) Objects.requireNonNull(postSnapshot.child("appointmenEndtTime").getValue()).toString();
-//
-//                            if ((TempDate.equals(choosenDate)) ) {
-//                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this date", Toast.LENGTH_SHORT).show();
-//                                break;
-//                            }
-////                            if ((appointmenStartTime.equals(choosenStartTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-////                            if ((appointmenEndTime.equals(choosenEndTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-//                        }//ifnish to check if there is allready date like it
-//
-//                        //not found- you can add this new treatment
-////                        FirebaseUser user = auth.getCurrentUser();
-////                        String id = user.getUid();
-//
-//                        newAppointment.setIdAppo();
-//
-//                        String id="appointment"+newAppointment.getIdAppo();
-//
-//                        rootReference.child(id).setValue(newAppointment); //add to firebase//child("Treatments")
-////                        int start= Integer.parseInt(choosenStartHour);
-////                        int end= Integer.parseInt(choosenEndHour);
-//                        int currEnd;
-//                        if (end-start>1) {
-//                            start=start+1;
-//                            currEnd=start+1;
-//                            while ((end-start)!=0)
-//                            {
-////                                newAppointment.setdate_app(choosenDate);
-//                                newAppointment.setStartTime(String.valueOf(start));
-//                                newAppointment.setEndTime(String.valueOf(currEnd));
-//                                newAppointment.setIdManager(managerid);
-//                                newAppointment.setIdAppo();
-//                                id="appointment"+newAppointment.getIdAppo();
-//                                rootReference.child(id).setValue(newAppointment);
-//                                currEnd++;
-//                            }
-//                        }
-//
-//
-//                        Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
-//                        startActivity(intent);
-//                    }// finish onDataChange
-//
-//
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
 
-                newAppointment.setIdAppo();
-                String id="appointment"+newAppointment.getIdAppo();
+                String id=rootReference.push().getKey();
+                newAppointment.setIdAppo(id);
+
 
                 rootReference=rootNode.getReference("Appointment");
                 rootReference.child(id).setValue(newAppointment); //add to firebase//child("Treatments")
@@ -295,8 +230,8 @@ int end;
                                 newAppointment.setStartTime(String.valueOf(start));
                                 newAppointment.setEndTime(String.valueOf(currEnd));
                                 newAppointment.setIdManager(managerId);
-                                newAppointment.setIdAppo();
-                                id="appointment"+newAppointment.getIdAppo();
+//                                newAppointment.setIdAppo();
+                                id=rootReference.push().getKey(); //////change
 
                                 rootNode=FirebaseDatabase.getInstance();
                                 rootReference=rootNode.getReference();
