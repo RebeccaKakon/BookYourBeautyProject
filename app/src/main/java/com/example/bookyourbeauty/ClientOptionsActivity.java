@@ -45,7 +45,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
 
                 boolean installed = isAppInstalled("com.whatsapp");
                 String num = "+972549195952";
-                String text = "Hello, I need help with BookYourBeauty app";
+                String text = "Hey, I need help with BookYourBeauty app";
 
                 if(installed)
                 {
