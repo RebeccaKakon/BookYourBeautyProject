@@ -30,7 +30,7 @@
         android:layout_marginTop="47dp"
         android:layout_marginEnd="240dp"
         android:layout_marginRight="240dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="70dp"
         android:text="Technical Support"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,5 +131,85 @@
         app:layout_constraintStart_toEndOf="@+id/Whatsapp_imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView_addInfo"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textView_addWorkingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginRight="240dp"
+        android:layout_marginBottom="30dp"
+        android:text="Add Working Time"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_addTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_addWorkingTime" />
+
+    <TextView
+        android:id="@+id/textView_ViewAppo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="View Exist Appointments"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_addInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_addWorkingTime"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_viewAppo" />
+
+    <TextView
+        android:id="@+id/textView_addInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="Add Information"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_editTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_addInfo" />
+
+    <TextView
+        android:id="@+id/textView_addTreatment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="30dp"
+        android:text="Add New Treatment"
+        app:layout_constraintBottom_toTopOf="@+id/Whatsapp_imageView"
+        app:layout_constraintEnd_toStartOf="@+id/textView_addInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_addTreatment" />
+
+    <TextView
+        android:id="@+id/textView_editTreatment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="70dp"
+        android:text="Edit Treatment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TextView_technicalSupport"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_editTreatment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

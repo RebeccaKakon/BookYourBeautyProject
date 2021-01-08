@@ -51,6 +51,7 @@ public class choosTimeAndDate extends AppCompatActivity {
         endHour_spinner= (Spinner) findViewById(R.id.EndHour_spinner);
 
         String[] hoursArray= {"select hour","10","11","12","13","14","15","16","17","18","19","20","21"};
+
         ArrayAdapter<String> adpHour= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,hoursArray);
         adpHour.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         startHour_spinner.setAdapter(adpHour);
