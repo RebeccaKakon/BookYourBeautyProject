@@ -18,11 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ManagerOptionsActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button AddTreatment;
-    Button Addinformation;
-    Button viewAppointment;
-    Button calendar;
-    Button editTretment;
+    ImageView addTreatment;
+    ImageView addinformation;
+    ImageView viewAppointment;
+    ImageView workingTime;
+    ImageView editTretment;
     ImageView whatsapp_imageView;
     TextView textView_support;
 
@@ -78,9 +78,9 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
 
 
     private void listenButtons() {
-        calendar.setOnClickListener(this);
-        AddTreatment.setOnClickListener(this);
-        Addinformation.setOnClickListener(this);
+        workingTime.setOnClickListener(this);
+        addTreatment.setOnClickListener(this);
+        addinformation.setOnClickListener(this);
         viewAppointment.setOnClickListener(this);
         editTretment.setOnClickListener(this);
         whatsapp_imageView.setOnClickListener(this);
@@ -89,24 +89,24 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
     }
 
     private void setButtons() {
-        AddTreatment= (Button) findViewById(R.id.AddTreatment);
-        Addinformation= (Button) findViewById(R.id.information);
-        viewAppointment= (Button) findViewById(R.id.viewAppointment);
-        calendar = (Button) findViewById(R.id.Calender);
-        editTretment = (Button) findViewById(R.id.editTretment);
+        addTreatment= (ImageView) findViewById(R.id.imageView_addTreatment);
+        addinformation= (ImageView) findViewById(R.id.imageView_addInfo);
+        viewAppointment= (ImageView) findViewById(R.id.imageView_viewAppo);
+        workingTime = (ImageView) findViewById(R.id.imageView_addWorkingTime);
+        editTretment = (ImageView) findViewById(R.id.imageView_editTreatment);
         whatsapp_imageView= (ImageView) findViewById(R.id.Whatsapp_imageView);
         textView_support= (TextView) findViewById(R.id.TextView_technicalSupport);
-        textView = (TextView) findViewById(R.id.TextView_managerOptions);
+        textView = (TextView) findViewById(R.id.TextView_ManagerOption);
     }
 
 
     @Override
     public void onClick(View v) {
-        if(v==AddTreatment){
+        if(v==addTreatment){
             Intent ii= new Intent(this,AddTreatmentActivity.class);
             startActivity(ii);
         }
-        else if(v==Addinformation){
+        else if(v==addinformation){
             Intent i = new Intent(this,AddInformation.class);
             i.putExtra("email", emailManager);
             startActivity(i);
@@ -116,7 +116,7 @@ public class ManagerOptionsActivity extends AppCompatActivity implements View.On
             i.putExtra("email", emailManager);
             startActivity(i);
         }
-        else if(v==calendar){
+        else if(v==workingTime){
             Intent i = new Intent(this,choosTimeAndDate.class);
             i.putExtra("email", emailManager);
 

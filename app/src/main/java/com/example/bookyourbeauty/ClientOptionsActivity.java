@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,7 +96,7 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
        // whatsapp= (Button) findViewById(R.id.whatsapp);
         whatsapp_imageView= (ImageView) findViewById(R.id.Whatsapp_imageView);
         textView_support= (TextView) findViewById(R.id.TextView_technicalSupport);
-        textViewC= (TextView) findViewById(R.id.TextView_clientOption);
+        textViewC= (TextView) findViewById(R.id.TextView_ManagerOption);
 
     }
 
