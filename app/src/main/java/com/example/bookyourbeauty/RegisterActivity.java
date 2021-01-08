@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     RadioButton male;
     EditText password;
     Button save;
+    TextView textRegister;
     Client client;
 
     private FirebaseAuth auth;
@@ -134,6 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
         male= (RadioButton) findViewById(R.id.Male);
         password = (EditText) findViewById(R.id.Password);
         save = (Button) findViewById(R.id.SaveNewClient);
+        textRegister=(TextView) findViewById(R.id.textView_RegisterClient);
     }
 
 

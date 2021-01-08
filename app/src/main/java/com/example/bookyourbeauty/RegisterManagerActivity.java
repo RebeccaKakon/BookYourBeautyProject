@@ -46,6 +46,7 @@ public class RegisterManagerActivity extends AppCompatActivity {
     EditText last_name;
     EditText password;
     Button save;
+    TextView textRegister;
 
     Manager manager;
 
@@ -63,6 +64,8 @@ public class RegisterManagerActivity extends AppCompatActivity {
         last_name = (EditText) findViewById(R.id.LastName);
         password = (EditText) findViewById(R.id.Password);
         save = (Button) findViewById(R.id.SaveNewManager);
+        textRegister=(TextView) findViewById(R.id.textView_RegisterManager);
+
 
         //save.setOnClickListener((View.OnClickListener) this);
         System.out.println("********************************** ");
