@@ -33,7 +33,6 @@ public class choosTimeAndDate extends AppCompatActivity {
     String choosenEndHour;
     String choosenStartHour;
 
-
     Spinner startHour_spinner;
     Spinner endHour_spinner;
     int start;

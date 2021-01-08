@@ -16,11 +16,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ClientOptionsActivity extends AppCompatActivity implements View.OnClickListener  {
-    Button profile;
-    Button bookAppo;
-    Button viewAppo;
-    Button viewInfo;
-    Button viewTreatment;
+    //Button profile;
+    ImageView bookAppo;
+    ImageView viewAppo;
+    ImageView viewManagerInfo;
+    ImageView treatmentMenu;
     //Button whatsapp;
     ImageView whatsapp_imageView;
     TextView textView_support;
@@ -78,22 +78,22 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
     }
 
     private void listenButtons() {
-        profile.setOnClickListener(this);
+      //  profile.setOnClickListener(this);
         bookAppo.setOnClickListener(this);
         viewAppo.setOnClickListener(this);
-        viewInfo.setOnClickListener(this);
-        viewTreatment.setOnClickListener(this);
+        viewManagerInfo.setOnClickListener(this);
+        treatmentMenu.setOnClickListener(this);
         whatsapp_imageView.setOnClickListener(this);
 
 
     }
 
     private void setButtons() {
-        profile= (Button) findViewById(R.id.profile);
-        bookAppo= (Button) findViewById(R.id.bookAppointment);
-        viewAppo= (Button) findViewById(R.id.viewAppointment);
-        viewInfo= (Button) findViewById(R.id.viewInfo);
-        viewTreatment= (Button) findViewById(R.id.viewTreatments);
+      //  profile= (Button) findViewById(R.id.profile);
+        bookAppo= (ImageView) findViewById(R.id.imageView_bookAppo);
+        viewAppo= (ImageView) findViewById(R.id.imageView_viewAppo);
+        viewManagerInfo= (ImageView) findViewById(R.id.imageView_managerInfo);
+        treatmentMenu= (ImageView) findViewById(R.id.imageView_treatmentMenu);
        // whatsapp= (Button) findViewById(R.id.whatsapp);
         whatsapp_imageView= (ImageView) findViewById(R.id.Whatsapp_imageView);
         textView_support= (TextView) findViewById(R.id.TextView_technicalSupport);
@@ -104,11 +104,12 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        if(v==profile){
-            Intent iii= new Intent(this,MainActivity.class);//ClientProfileActivity
-            startActivity(iii);
-        }
-        else if(v==bookAppo){
+//        if(v==profile){
+//            Intent iii= new Intent(this,MainActivity.class);//ClientProfileActivity
+//            startActivity(iii);
+//        }
+//        else
+        if(v==bookAppo){
             Intent ii = new Intent(this,BookTreatmentActivity.class);
             ii.putExtra("email_currentClient", emailClient);
             startActivity(ii);
@@ -119,12 +120,12 @@ public class ClientOptionsActivity extends AppCompatActivity implements View.OnC
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }
-        else if(v==viewTreatment){
+        else if(v==treatmentMenu){
             Intent i = new Intent(this,viewTforClient.class);//viewAppointment
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
         }
-        else if(v==viewInfo){
+        else if(v==viewManagerInfo){
             Intent i = new Intent(this,viewInfoActivity.class);//viewAppointment
             i.putExtra("email_currentClient", emailClient);///////// new
             startActivity(i);
