@@ -68,6 +68,8 @@ public class BookDateActivity extends AppCompatActivity {
                 for (DataSnapshot currAppo : snapshot.getChildren()) {
                     //if appointment is free add to list
                     currDate= currAppo.child("date_app").getValue().toString();
+                    currIdClient = currAppo.child("idClient").getValue().toString();
+
 //                   if (currAppo.child("idClient").exists()) {//delete
 //                        currIdClient = currAppo.child("idClient").getValue().toString();
 //                   }

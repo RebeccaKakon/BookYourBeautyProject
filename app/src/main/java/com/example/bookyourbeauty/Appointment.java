@@ -2,43 +2,35 @@ package com.example.bookyourbeauty;
 
 public class Appointment {
     private String idAppo;
+    public String idTreatment;
     private String idClient;
-    private String  idManager;
+    private String idManager;
     private String date_app;
     private String startTime;
     private String endTime;
-    private String IdTreatment;
-    static int countIdAppointment=0;
+//    static int countIdAppointment=0;
 
     public Appointment(){
     }
 
-    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId,String clientId) {
-        this.date_app=choosenDate;
-        this.startTime=choosenStartTime;
-        this.endTime=choosenEndTime;
-//        this.idAppo=countIdAppointment;
-        this.countIdAppointment++;
-        this.idManager= manaherId;
-        this.idClient=clientId;
+//    public Appointment(String choosenDate, String choosenStartTime, String choosenEndTime, String manaherId,String clientId, String IdTreatment) {
+//        this.date_app=choosenDate;
+//        this.startTime=choosenStartTime;
+//        this.endTime=choosenEndTime;
+////        this.idAppo=countIdAppointment;
+////        this.countIdAppointment++;
+//        this.idManager= manaherId;
+//        this.idClient=clientId;
+//       this.IdTreatment= IdTreatment;
+//    }
+
+
+    public void setIdOfTreatment(String IdT) {
+        this.idTreatment = IdT;
     }
 
-
-
-//    public Appointment(int idApo,String idClient, String idManager,int idTreatment,String date,String startTime,String endTime){
-//        this.idAppo=idApo;
-//        this.idClient=idClient;
-//        this.idManager=idManager;
-//        this.idTreatment=idTreatment;
-//        this.date=date;
-//        this.startTime=startTime;
-//        this.endTime=endTime;
-//    }
-public void setIdTreatment(String setIdTreatment) {
-    this.IdTreatment = setIdTreatment;
-}
-    public String  geIdTreatment() {
-        return IdTreatment;
+    public String  geIdOfTreatment() {
+        return idTreatment;
     }
 
     public void setdate_app(String date_app) {
@@ -84,13 +76,6 @@ public void setIdTreatment(String setIdTreatment) {
         this.idManager = currId;
     }
 
-//    public int getidAppointment() {
-//        return idAppointment;
-//    }
-//
-//    public void setidAppointment(int currId) {
-//        this.idAppointment = currId;
-//    }
 
     @Override
     public String toString() {

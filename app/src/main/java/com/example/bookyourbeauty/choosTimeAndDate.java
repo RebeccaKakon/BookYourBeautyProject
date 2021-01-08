@@ -35,102 +35,14 @@ public class choosTimeAndDate extends AppCompatActivity {
 
 
     Spinner startHour_spinner;
-Spinner endHour_spinner;
-int start;
-int end;
+    Spinner endHour_spinner;
+    int start;
+    int end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choos_time_and_date);
-////*********origin choose
-//        managerid = getIntent().getStringExtra("email");
-//        save = (Button) findViewById(R.id.saveCreat);
-//        date = (EditText) findViewById(R.id.chooseDate);
-//        //start= (EditText) findViewById(R.id.startTime);
-//        //end= (EditText) findViewById(R.id.endTime);
-//
-//
-//        save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("*********start onClick ");
-//                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-//
-////                choosenDate= date.getText().toString();
-////                choosenStartTime= start.getText().toString();
-////                choosenEndTime= end.getText().toString();
-//
-//                rootReference = rootNode.getReference();
-//                auth = FirebaseAuth.getInstance();
-////                FirebaseUser user = auth.getCurrentUser();
-////                managerid=auth.getCurrentUser().getUid();
-//
-////                newAppointment = new Appointment(choosenDate,choosenStartTime,choosenEndTime,managerid);
-//                newAppointment = new Appointment();
-//                String choosenDate = date.getText().toString();
-//               // String choosenStartTime = start.getText().toString();
-//             //   String choosenEndTime = end.getText().toString();
-//
-//                newAppointment.setdate_app(choosenDate);
-//                newAppointment.setStartTime(choosenStartTime);
-//                newAppointment.setEndTime(choosenEndTime);
-//                newAppointment.setIdManager(managerid);
-//                //   newAppointment.setIdClient(null); //// new
-//                //  newAppointment.settretmantId(null);///new
-//
-//
-//                rootNode = FirebaseDatabase.getInstance();
-//                rootReference = rootNode.getReference("Appointment");
-//                rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-//                            //from DB
-//                            String TempDate = (String) postSnapshot.child("date_app").getValue().toString();
-////                            String start = (String) Objects.requireNonNull(postSnapshot.child("start").getValue()).toString();
-////                            String appointmenEndTime = (String) Objects.requireNonNull(postSnapshot.child("appointmenEndtTime").getValue()).toString();
-//
-//                            if ((TempDate.equals(choosenDate))) {
-//                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this date", Toast.LENGTH_SHORT).show();
-//                                break;
-//                            }
-////                            if ((appointmenStartTime.equals(choosenStartTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-////                            if ((appointmenEndTime.equals(choosenEndTime)) ) {
-////                                Toast.makeText(choosTimeAndDate.this, "you already have an appoinment on this time", Toast.LENGTH_SHORT).show();
-////                                break;
-////                            }
-//                        }
-//                        //not found- you can add this new treatment
-////                        FirebaseUser user = auth.getCurrentUser();
-////                        String id = user.getUid();
-//                        newAppointment.setIdAppo();
-//
-//                        String id = "appointment" + newAppointment.getIdAppo();
-//
-//                        rootReference.child(id).setValue(newAppointment); //add to firebase//child("Treatments")
-//                        Toast.makeText(choosTimeAndDate.this, "your add appointment was seccssed", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(choosTimeAndDate.this, ManagerOptionsActivity.class);
-//                        startActivity(intent);
-//                    }
-//
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//
-//            }
-//
-//        });
-//
-//    }
-//}//*********end_origin choose
 
         managerId= getIntent().getStringExtra("email");
         save = (Button) findViewById(R.id.saveCreat);
@@ -145,11 +57,6 @@ int end;
         startHour_spinner.setAdapter(adpHour);
         endHour_spinner.setAdapter(adpHour);
 
-//        String[] minsArray= {"select mins","00"};
-//        ArrayAdapter<String> adpMins= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,minsArray);
-//        adpMins.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        startMins_spinner.setAdapter(adpMins);
-//        endMins_spinner.setAdapter(adpMins);
 
         startHour_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -159,13 +66,6 @@ int end;
             }
         });
 
-//        startMins_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                choosenStartMins= (String) parent.getItemAtPosition(position);
-//            }
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
 
         endHour_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -175,13 +75,6 @@ int end;
             }
         });
 
-//        endMins_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                choosenEndMins= (String) parent.getItemAtPosition(position);
-//            }
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,27 +85,26 @@ int end;
 
                 newAppointment = new Appointment();
                 String choosenDate= date.getText().toString();
-                 start= Integer.parseInt(choosenStartHour);
-                 end= Integer.parseInt(choosenEndHour);
-
-                 newAppointment.setIdClient("-");
-                newAppointment.setIdTreatment("-");
+                start= Integer.parseInt(choosenStartHour);
+                end= Integer.parseInt(choosenEndHour);
+                newAppointment.setIdClient("-");
+                newAppointment.setIdOfTreatment("-");
                 newAppointment.setdate_app(choosenDate);
                 newAppointment.setStartTime(choosenStartHour);
                 int tempEnd= Integer.parseInt(choosenStartHour)+1;
                 newAppointment.setEndTime(String.valueOf(tempEnd));
                 newAppointment.setIdManager(managerId);
 
-
                 rootNode=FirebaseDatabase.getInstance();
                 rootReference=rootNode.getReference("Appointment");
 
-                String id=rootReference.push().getKey();
-                newAppointment.setIdAppo(id);
+                String idd=rootReference.push().getKey();
+                newAppointment.setIdAppo(idd);
 
 
                 rootReference=rootNode.getReference("Appointment");
-                rootReference.child(id).setValue(newAppointment); //add to firebase//child("Treatments")
+                System.out.println("setIdTreatment!!!!!!!!!!!"+newAppointment.geIdOfTreatment());
+                rootReference.child(idd).setValue(newAppointment); //add to firebase//child("Treatments")
                 int currEnd=start+1;
                 if (end-start>1) {
                     System.out.println("111111111111111111start= "+start+" end= "+end+" currEnd= "+currEnd);
@@ -224,16 +116,19 @@ int end;
                             {
                                 System.out.println("start= "+start+" end= "+end+" currEnd= "+currEnd);
                                 System.out.println("in the while");
+
                                 newAppointment.setdate_app(choosenDate);
                                 newAppointment.setIdClient("-");
-                                newAppointment.setIdTreatment("-");
+                                newAppointment.setIdOfTreatment("-");
                                 newAppointment.setStartTime(String.valueOf(start));
                                 newAppointment.setEndTime(String.valueOf(currEnd));
                                 newAppointment.setIdManager(managerId);
 //                                newAppointment.setIdAppo();
-                                id=rootReference.push().getKey(); //////change
+                                String id=rootReference.push().getKey(); //////change
 
                                 rootNode=FirebaseDatabase.getInstance();
+                                newAppointment.setIdAppo(id);
+
                                 rootReference=rootNode.getReference();
                                 rootReference=rootNode.getReference("Appointment");
 

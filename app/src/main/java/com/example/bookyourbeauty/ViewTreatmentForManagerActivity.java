@@ -119,15 +119,19 @@ public class ViewTreatmentForManagerActivity extends AppCompatActivity implement
     @Override
     public void onClick(View v) {
         if(v== editPrice) {
-            if (Memail.equals("yarden@gmail.com")) {
-
-                Intent intent = new Intent(this, EditTreatment.class);
+            Intent intent = new Intent(this, EditTreatment.class);
                 intent.putExtra("treatment_name", tname);
 //            intent.putExtra("Tneame",Tname);
                 startActivity(intent);
-            }
-            else
-                Toast.makeText(getApplicationContext(),"only yarden can change the date", Toast.LENGTH_SHORT).show();
+//            if (Memail.equals("yarden@gmail.com")) {
+//
+//                Intent intent = new Intent(this, EditTreatment.class);
+//                intent.putExtra("treatment_name", tname);
+////            intent.putExtra("Tneame",Tname);
+//                startActivity(intent);
+//            }
+//            else
+//                Toast.makeText(getApplicationContext(),"only yarden can change the date", Toast.LENGTH_SHORT).show();
         }
         if (v == back) {
             Intent intent = new Intent(this, ClientOptionsActivity.class);
