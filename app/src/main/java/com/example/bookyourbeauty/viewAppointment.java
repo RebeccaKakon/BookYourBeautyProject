@@ -85,7 +85,7 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                     if (currentIdClient.equals(clientId)) {
                         String startTime=s.child("startTime").getValue().toString();
                         String date_app=s.child("date_app").getValue().toString();
-                        String Tid=s.child("idTreatment").getValue().toString();
+                        String Tid=s.child("idTreatment").getValue().toString(); //name
                         String Aid=s.child("idAppo").getValue().toString();
                         String Cid=s.child("idClient").getValue().toString();
                         String Mid=s.child("idManager").getValue().toString();
@@ -95,10 +95,10 @@ public class viewAppointment extends AppCompatActivity  implements View.OnClickL
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 //go through all appointments
-                                String currentTreatid;
+                                String currentTreatid; //namr
                                 for (DataSnapshot s : snapshot.getChildren()) {
                                     //if appointment is free add to list
-                                    currentTreatid= s.child("idTreatment").getValue().toString();
+                                    currentTreatid= s.child("treatmentName").getValue().toString();
                                     if (currentTreatid.equals(Tid)) {
                                         String Tname=s.child("treatmentName").getValue().toString();
 //                                        arrayList.add(Tname);

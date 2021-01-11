@@ -92,6 +92,7 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item=(String)adapterView.getItemAtPosition(i);//This will give you the same result of viewHolder.LL.setOnClickListener as you are doing
+                System.out.println("item view ========"+item);
                 referenceRoot=rootNode.getReference("ManagerInfo");
                 referenceRoot.addListenerForSingleValueEvent(new ValueEventListener(){
                     @Override
@@ -104,8 +105,11 @@ public class ViewInfoForManagerOnlyActivity extends AppCompatActivity implements
 
                             //if appointment is free add to list
                             currenInfo = s.child("information").getValue().toString();
+                            String curidMassage= s.child("idMassage").getValue().toString();
+                            System.out.println("currenInfoooo ========"+currenInfo);
+
                             if (currenInfo.equals(item)) {
-                                referenceRoot.child(item).removeValue();
+                                referenceRoot.child(curidMassage).removeValue();
                                 Toast.makeText(ViewInfoForManagerOnlyActivity.this, "your post wase deleted", Toast.LENGTH_SHORT).show();
                                 break;
 

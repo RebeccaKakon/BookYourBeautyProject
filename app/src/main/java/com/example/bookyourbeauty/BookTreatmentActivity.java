@@ -79,7 +79,7 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
                         System.out.println("in setOnItemSelectedListener of treatment spinner+++++++++++++++++++++++++++");
                         choosenTreatment = (String)parent.getItemAtPosition(position).toString();
                         System.out.println("&&&&choosenTreatment  =  "+choosenTreatment);
-                        setChoosenIdTreatment(choosenTreatment); //we found the id of the chosen manager and set it to the id opp manager
+                        setChoosenIdTreatment(choosenTreatment); //
 
                     }
                     @Override
@@ -98,7 +98,7 @@ public class BookTreatmentActivity extends AppCompatActivity {//implements View.
             public void onClick(View v) { System.out.println("in book Treatment choosenIdTreatment= "+choosenIdTreatment);
             Intent i = new Intent(BookTreatmentActivity.this, BookManagerActivity.class);
             i.putExtra("email_currentClient", emailClient);
-            i.putExtra("id_choosenTreatment", choosenIdTreatment);
+            i.putExtra("id_choosenTreatment", choosenTreatment);
             startActivity(i);
             }
         });

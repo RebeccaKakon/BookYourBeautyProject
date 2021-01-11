@@ -17,6 +17,6 @@ public class viewAppo {
         return  clientName + "\n"  +
                 startTime + ":00"+"\n" +
                 date_app + "\n" +
-                Tname + "\n" ;
+                Tname + "\n" + "Appo id: "+Aid +"\n" ;
     }
 }
