@@ -67,13 +67,13 @@ public class EditTreatment extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
                 choosenPrice = newprice.getText().toString();
-
+                System.out.println("1111111 choosenPrice : " + choosenPrice);
                 referenceRoot = rootNode.getReference("Treatments");
                 referenceRoot.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                choosenPrice= newprice.getText().toString();
-                        System.out.println("&&&&&& choosenPrice : " + choosenPrice);
+                        System.out.println("22222 choosenPrice : " + choosenPrice);
 
                         //go through all appointments
                         String currentName;

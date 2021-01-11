@@ -14,10 +14,9 @@ public class viewAppo {
 
     @Override
     public String toString() {
-        return "Appointment: " + "\n" +
-                "client=" + clientName + "\n" + "beautician= " +managerName + "\n" +
-                "time=" + startTime + "\n" +
-                "date=" + date_app + "\n" +
-                "the treatment=" + Tname + "\n" + "AppoNumm="+Aid + "\n" ;
+        return  clientName + "\n"  +
+                startTime + ":00"+"\n" +
+                date_app + "\n" +
+                Tname + "\n" ;
     }
 }

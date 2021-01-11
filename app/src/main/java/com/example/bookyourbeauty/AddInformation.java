@@ -78,7 +78,8 @@ public class AddInformation extends AppCompatActivity {//implements View.OnClick
 
 //                        newAppointment.setIdAppo();
 
-                        String id=managerinfo;
+                        String id= rootReference.push().getKey();////// new
+                        info.idMassage=id;
 
                         rootReference.child(id).setValue(info); //add to firebase//child("Treatments")
                         Toast.makeText(AddInformation.this, "your info was seccssfully added", Toast.LENGTH_SHORT).show();

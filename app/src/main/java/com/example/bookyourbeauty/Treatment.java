@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
 import androidx.annotation.NonNull;
 
 public class Treatment<countIdTreatment> {
-    private Calendar time;
+
     private String treatmentName;
     private int idTreatment;
     private String price;
@@ -25,16 +25,14 @@ public class Treatment<countIdTreatment> {
 //        this.time=new GregorianCalendar();
     }
 
-    public Treatment(Calendar currTime,String currName, int currId, String price){
-        this.time=currTime;
+    public Treatment(String currName, int currId, String price){
+
         this.treatmentName=currName;
         this.idTreatment=currId;
         this.price= price;
     }
     public Treatment(String currName, String price){
         this.treatmentName=currName;
-        this.time=new GregorianCalendar();
-        this.time.add(Calendar.MINUTE,30);
         this.idTreatment=countIdTreatment;
         countIdTreatment++;
         this.price=price;
@@ -92,14 +90,6 @@ public class Treatment<countIdTreatment> {
         this.timeT = timeT;
     }
 
-    public Calendar getTime() {
-        return time;
-    }
-
-    public void setTime(Calendar cuurTime) {
-        this.time = cuurTime;
-    }
-
     public String getTreatmentName() {
         return treatmentName;
     }
@@ -122,7 +112,7 @@ public class Treatment<countIdTreatment> {
     }
 
     public String toStringView() {
-        return treatmentName + " \n" + "price=" +price +" \n"+ timeT;
+        return "treatment: "+treatmentName + " \n" + "price=" +price ;
     }
 
 

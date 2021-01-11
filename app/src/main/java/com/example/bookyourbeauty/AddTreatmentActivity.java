@@ -69,6 +69,7 @@ public class AddTreatmentActivity extends AppCompatActivity {
                         }
 
                         String id=choosentreatmentName;
+                        newTreatment.settimeT("60 minuts");
                         System.out.println("newTreatment.getTreatmentName()=  "+newTreatment.getTreatmentName());
                         rootReference.child(id).setValue(newTreatment); //add to firebase//child("Treatments")
 

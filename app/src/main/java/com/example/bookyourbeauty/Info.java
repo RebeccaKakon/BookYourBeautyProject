@@ -3,6 +3,7 @@ package com.example.bookyourbeauty;
 public class Info {
     private String information;
     private String MId;
+    public String idMassage;
 //    String idManager;
 
 

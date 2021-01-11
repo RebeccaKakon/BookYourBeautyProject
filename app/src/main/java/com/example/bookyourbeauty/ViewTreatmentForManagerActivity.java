@@ -92,7 +92,7 @@ public class ViewTreatmentForManagerActivity extends AppCompatActivity implement
                     T.setTreatmentName(treatmentName);
                     T.setprice(treatmentPrice);
 
-                    arrayList.add(T.toString());
+                    arrayList.add(T.toStringView());
                     arrayAdapter.notifyDataSetChanged();
                 }
 
@@ -108,8 +108,8 @@ public class ViewTreatmentForManagerActivity extends AppCompatActivity implement
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item=(String)adapterView.getItemAtPosition(i);//This will give you the same result of viewHolder.LL.setOnClickListener as you are doing
-                tname=id_func(item,"treatment=");
-//                System.out.println("item====== "+item);
+                tname=id_func(item,"treatment: ");
+                System.out.println("item====== "+item + "  ///");
 
             }
         });
@@ -120,9 +120,10 @@ public class ViewTreatmentForManagerActivity extends AppCompatActivity implement
     public void onClick(View v) {
         if(v== editPrice) {
             Intent intent = new Intent(this, EditTreatment.class);
-                intent.putExtra("treatment_name", tname);
+            System.out.println("item passedddd====== "+tname);
+            intent.putExtra("treatment_name", tname);
 //            intent.putExtra("Tneame",Tname);
-                startActivity(intent);
+            startActivity(intent);
 //            if (Memail.equals("yarden@gmail.com")) {
 //
 //                Intent intent = new Intent(this, EditTreatment.class);
