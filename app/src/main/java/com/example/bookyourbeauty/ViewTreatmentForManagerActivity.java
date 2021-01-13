@@ -135,7 +135,7 @@ public class ViewTreatmentForManagerActivity extends AppCompatActivity implement
 //                Toast.makeText(getApplicationContext(),"only yarden can change the date", Toast.LENGTH_SHORT).show();
         }
         if (v == back) {
-            Intent intent = new Intent(this, ClientOptionsActivity.class);
+            Intent intent = new Intent(this, ManagerOptionsActivity.class);
             startActivity(intent);
         }
     }
